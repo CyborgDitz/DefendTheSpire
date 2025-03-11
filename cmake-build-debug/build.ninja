@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: TestCmake
+# Project: DefendTheSpire
 # Configurations: Debug
 # =============================================================================
 
@@ -57,6 +57,14 @@ build CMakeFiles/DefendTheSpire.dir/main.cpp.obj: CXX_COMPILER__DefendTheSpire_u
   OBJECT_DIR = CMakeFiles\DefendTheSpire.dir
   OBJECT_FILE_DIR = CMakeFiles\DefendTheSpire.dir
 
+build CMakeFiles/DefendTheSpire.dir/Draw.cpp.obj: CXX_COMPILER__DefendTheSpire_unscanned_Debug C$:/Projects/C++Projects/DefendTheSpire/Draw.cpp || cmake_object_order_depends_target_DefendTheSpire
+  DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
+  DEP_FILE = CMakeFiles\DefendTheSpire.dir\Draw.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -IC:/raylib/raylib/src -IC:/raylib/raylib/src/external/glfw/include
+  OBJECT_DIR = CMakeFiles\DefendTheSpire.dir
+  OBJECT_FILE_DIR = CMakeFiles\DefendTheSpire.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target DefendTheSpire
@@ -65,7 +73,7 @@ build CMakeFiles/DefendTheSpire.dir/main.cpp.obj: CXX_COMPILER__DefendTheSpire_u
 #############################################
 # Link the executable DefendTheSpire.exe
 
-build DefendTheSpire.exe: CXX_EXECUTABLE_LINKER__DefendTheSpire_Debug CMakeFiles/DefendTheSpire.dir/main.cpp.obj | raylib_build/raylib/libraylib.a || raylib_build/raylib/external/glfw/src/glfw raylib_build/raylib/libraylib.a
+build DefendTheSpire.exe: CXX_EXECUTABLE_LINKER__DefendTheSpire_Debug CMakeFiles/DefendTheSpire.dir/main.cpp.obj CMakeFiles/DefendTheSpire.dir/Draw.cpp.obj | raylib_build/raylib/libraylib.a || raylib_build/raylib/external/glfw/src/glfw raylib_build/raylib/libraylib.a
   FLAGS = -g
   LINK_LIBRARIES = raylib_build/raylib/libraylib.a  -lopengl32  -lglu32  -lwinmm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\DefendTheSpire.dir

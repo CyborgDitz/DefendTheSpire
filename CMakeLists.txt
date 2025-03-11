@@ -11,7 +11,10 @@ set(BUILD_TESTING OFF CACHE BOOL "Disable raylib tests")
 add_subdirectory("C:/raylib/raylib" raylib_build)
 
 # Create an executable using main.cpp.
-add_executable(DefendTheSpire main.cpp)
+add_executable(DefendTheSpire main.cpp
+    Draw.cpp
+)
+
 
 # Link your executable to the raylib target.
 target_link_libraries(DefendTheSpire PRIVATE raylib)

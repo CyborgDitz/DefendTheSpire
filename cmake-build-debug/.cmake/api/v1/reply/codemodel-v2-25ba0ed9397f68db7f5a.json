@@ -107,7 +107,7 @@
 					[
 						0
 					],
-					"name" : "TestCmake",
+					"name" : "DefendTheSpire",
 					"targetIndexes" : 
 					[
 						0
@@ -151,7 +151,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "DefendTheSpire::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DefendTheSpire-Debug-09f4c1f5c9b749cadc62.json",
+					"jsonFile" : "target-DefendTheSpire-Debug-b78008630ac204ad5807.json",
 					"name" : "DefendTheSpire",
 					"projectIndex" : 0
 				},
