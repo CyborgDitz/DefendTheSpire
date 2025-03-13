@@ -380,8 +380,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug",
-		"source" : "C:/Projects/C++Projects/DefendTheSpire"
+		"build" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug",
+		"source" : "C:/Projects/C++/DefendTheSpire"
 	},
 	"version" : 
 	{
