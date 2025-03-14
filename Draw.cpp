@@ -1,6 +1,6 @@
 #include "Draw.h"
 
-extern Tile grid[MAP_HEIGHT][MAP_WIDTH];
+
 void DrawGrid() {
   for (int y = 0; y < MAP_HEIGHT; y++) {
     for (int x = 0; x < MAP_WIDTH; x++) {

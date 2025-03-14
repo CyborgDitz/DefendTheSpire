@@ -27,5 +27,5 @@ struct Tile
   TileType type;
   Position position;
   };
-
+extern Tile grid[MAP_HEIGHT][MAP_WIDTH];
 #endif //GLOBALS_H

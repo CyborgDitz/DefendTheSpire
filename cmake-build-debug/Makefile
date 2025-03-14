@@ -293,6 +293,30 @@ TowerManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.s
 .PHONY : TowerManager.cpp.s
 
+globals.obj: globals.cpp.obj
+.PHONY : globals.obj
+
+# target to build an object file
+globals.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/globals.cpp.obj
+.PHONY : globals.cpp.obj
+
+globals.i: globals.cpp.i
+.PHONY : globals.i
+
+# target to preprocess a source file
+globals.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/globals.cpp.i
+.PHONY : globals.cpp.i
+
+globals.s: globals.cpp.s
+.PHONY : globals.s
+
+# target to generate assembly for a file
+globals.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/globals.cpp.s
+.PHONY : globals.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -342,6 +366,9 @@ help:
 	@echo ... TowerManager.obj
 	@echo ... TowerManager.i
 	@echo ... TowerManager.s
+	@echo ... globals.obj
+	@echo ... globals.i
+	@echo ... globals.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

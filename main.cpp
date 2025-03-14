@@ -1,4 +1,5 @@
 #include <iostream>
+#include "globals.h"
 #include "Draw.h"
 
 

@@ -14,6 +14,7 @@ add_subdirectory("C:/raylib/raylib" raylib_build)
 add_executable(DefendTheSpire main.cpp
     Draw.cpp
         TowerManager.cpp
+        globals.cpp
 )
 
 

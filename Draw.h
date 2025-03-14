@@ -5,4 +5,5 @@
 #include "globals.h"
 
 void DrawGrid();
+
 #endif //DRAW_H
