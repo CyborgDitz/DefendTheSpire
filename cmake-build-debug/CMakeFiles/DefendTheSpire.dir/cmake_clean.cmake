@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DefendTheSpire.dir/Creeps.cpp.obj"
+  "CMakeFiles/DefendTheSpire.dir/Creeps.cpp.obj.d"
   "CMakeFiles/DefendTheSpire.dir/Draw.cpp.obj"
   "CMakeFiles/DefendTheSpire.dir/Draw.cpp.obj.d"
   "CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.obj"

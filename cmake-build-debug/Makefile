@@ -245,6 +245,30 @@ update_mappings/fast:
 	$(MAKE) $(MAKESILENT) -f raylib_build\raylib\external\glfw\src\CMakeFiles\update_mappings.dir\build.make raylib_build/raylib/external/glfw/src/CMakeFiles/update_mappings.dir/build
 .PHONY : update_mappings/fast
 
+Creeps.obj: Creeps.cpp.obj
+.PHONY : Creeps.obj
+
+# target to build an object file
+Creeps.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/Creeps.cpp.obj
+.PHONY : Creeps.cpp.obj
+
+Creeps.i: Creeps.cpp.i
+.PHONY : Creeps.i
+
+# target to preprocess a source file
+Creeps.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/Creeps.cpp.i
+.PHONY : Creeps.cpp.i
+
+Creeps.s: Creeps.cpp.s
+.PHONY : Creeps.s
+
+# target to generate assembly for a file
+Creeps.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/Creeps.cpp.s
+.PHONY : Creeps.cpp.s
+
 Draw.obj: Draw.cpp.obj
 .PHONY : Draw.obj
 
@@ -384,6 +408,9 @@ help:
 	@echo ... DefendTheSpire
 	@echo ... glfw
 	@echo ... raylib
+	@echo ... Creeps.obj
+	@echo ... Creeps.i
+	@echo ... Creeps.s
 	@echo ... Draw.obj
 	@echo ... Draw.i
 	@echo ... Draw.s

@@ -19,7 +19,8 @@ struct Node
 enum TileType
  {
   EMPTY = 0,
-  TOWER = 1
+  TOWER = 1,
+    WALL = 2,
   };
 
 struct Tile
