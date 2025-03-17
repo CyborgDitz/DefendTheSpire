@@ -16,6 +16,9 @@ void DrawGrid() {
         case WALL:
           tileColor = BLACK;
         break;
+        case SPIRE:
+          tileColor = PINK;
+        break;
         default:
           tileColor = RAYWHITE;
         break;

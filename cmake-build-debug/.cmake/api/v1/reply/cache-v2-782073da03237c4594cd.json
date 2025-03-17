@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Projects/C++/DefendTheSpire/cmake-build-debug"
+			"value" : "c:/Projects/C++Projects/DefendTheSpire/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -140,22 +140,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "ON"
-		},
-		{
-			"name" : "CMAKE_COLOR_MAKEFILE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "UNINITIALIZED",
-			"value" : ""
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -590,6 +574,22 @@
 			"value" : ""
 		},
 		{
+			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Enable/Disable output of compile commands during generation."
+				}
+			],
+			"type" : "BOOL",
+			"value" : ""
+		},
+		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
 			"properties" : 
 			[
@@ -611,7 +611,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -623,7 +623,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "MinGW Makefiles"
+			"value" : "Ninja"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -695,7 +695,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Projects/C++/DefendTheSpire"
+			"value" : "C:/Projects/C++Projects/DefendTheSpire"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -986,16 +986,12 @@
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
 					"value" : "make program"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/PROGRA~1/JETBRA~1/CLION2~1.1/bin/mingw/bin/mingw32-make.exe"
+			"value" : "C:/Program Files/JetBrains/CLion 2024.3.1.1/bin/ninja/win/x64/ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1715,7 +1711,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug"
+			"value" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug"
 		},
 		{
 			"name" : "DefendTheSpire_IS_TOP_LEVEL",
@@ -1739,7 +1735,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Projects/C++/DefendTheSpire"
+			"value" : "C:/Projects/C++Projects/DefendTheSpire"
 		},
 		{
 			"name" : "ENABLE_ASAN",
@@ -1799,7 +1795,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug/raylib_build/raylib/external/glfw"
+			"value" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug/raylib_build/raylib/external/glfw"
 		},
 		{
 			"name" : "GLFW_BUILD_DOCS",
@@ -2167,7 +2163,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug/raylib_build/raylib"
+			"value" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug/raylib_build/raylib"
 		},
 		{
 			"name" : "raylib_IS_TOP_LEVEL",
