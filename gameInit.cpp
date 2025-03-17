@@ -31,3 +31,11 @@ void initializeGrid() {
     initializeWall();
     initializeSpire();
 }
+
+
+
+void initializeEnemies() {
+    std::vector<Enemy> enemies;
+    enemies.push_back(Enemy(Position{2, 2}, 1, RED));
+}
+

@@ -5,10 +5,6 @@
 #define GRID_HEIGHT 17
 #define TILE_SIZE 32.0f
 #include <vector>
-//todo tilemap 0 is empty, 1 is tower
-//todo 1 click on tile to change to 1
-
-//todo functions: draw tilemap, place tower(bool is occupied), get mouse click on tile
 
 enum TileType
  {
@@ -22,6 +18,7 @@ struct Tile
   {
   TileType type;
   };
+
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
 bool InBounds (int y, int x);
 #endif //GLOBALS_H

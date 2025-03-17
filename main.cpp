@@ -17,6 +17,7 @@ int main() {
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawGrid();
+        DrawCreeps();
         EndDrawing();
     }
 

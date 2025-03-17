@@ -10,4 +10,5 @@ void initializeEmpty();
 void initializeSpire();
 void initializeWall();
 void initializeGrid();
+void initializeEnemies();
 #endif //GAME_H

@@ -1,6 +1,7 @@
 #include "Draw.h"
 #include "Raylib.h"
 #include "globals.h"
+#include "Creeps.h"
 void DrawGrid() {
   for (int y = 0; y < GRID_HEIGHT; y++) {
     for (int x = 0; x < GRID_WIDTH; x++) {
@@ -29,5 +30,16 @@ void DrawGrid() {
 
       DrawRectangleLines(tileRect.x, tileRect.y, tileRect.width, tileRect.height, LIGHTGRAY);
     }
+  }
+}
+
+void DrawCreeps() {
+
+  for (const Enemy& enemy : enemies) {
+    const Rectangle tileRect = { enemy.position.x * TILE_SIZE, enemy.position.y * TILE_SIZE, TILE_SIZE, TILE_SIZE };
+
+    DrawRectangle(tileRect.x, tileRect.y, tileRect.width, tileRect.height, enemy.color);
+
+    DrawRectangleLines(tileRect.x, tileRect.y, tileRect.width, tileRect.height, LIGHTGRAY);
   }
 }
