@@ -1,7 +1,7 @@
 #include "globals.h"
 #include "raylib.h"
 bool InBounds(int x, int y) {
- return (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT);
+ return (x >= 0 && x < GRID_WIDTH && y >= 0 && y < GRID_HEIGHT);
 }
 void ToggleTowerTile(int x, int y)
 {
@@ -27,8 +27,8 @@ void ToggleTowerTile(int x, int y)
 
 void ClickTile() {
  Vector2 mousePosition = GetMousePosition();
- int x = mousePosition.x / (GetScreenWidth() / MAP_WIDTH);
- int y = mousePosition.y / (GetScreenHeight() / MAP_HEIGHT);
+ int x = mousePosition.x / (GetScreenWidth() / GRID_WIDTH);
+ int y = mousePosition.y / (GetScreenHeight() / GRID_HEIGHT);
 
  if (InBounds(x, y)) ToggleTowerTile(x, y);
 }

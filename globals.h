@@ -1,8 +1,8 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#define MAP_WIDTH 16
-#define MAP_HEIGHT 16
+#define GRID_WIDTH 16
+#define GRID_HEIGHT 16
 #define TILE_SIZE 32.0f
 #include <vector>
 //todo tilemap 0 is empty, 1 is tower
@@ -11,7 +11,7 @@
 //todo functions: draw tilemap, place tower(bool is occupied), get mouse click on tile
 struct Position
  {
-    int x, y;
+    int y, x;
  };
 struct Node
  {
@@ -30,6 +30,6 @@ struct Tile
   TileType type;
   Position position;
   };
-extern std::vector<std::vector<Tile>> grid;
+extern Tile grid[GRID_WIDTH][GRID_HEIGHT];
 void initializeGrid();
 #endif //GLOBALS_H

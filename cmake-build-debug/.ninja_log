@@ -54,3 +54,10 @@
 26	839	7639085894907538	CMakeFiles/DefendTheSpire.dir/game.cpp.obj	d832ff50cbd8516a
 9	847	7639085894737757	CMakeFiles/DefendTheSpire.dir/main.cpp.obj	ccfcd54a7cbe54b4
 848	1090	7639085903128717	DefendTheSpire.exe	3404ce44a57c6400
+29	748	7639093740144821	CMakeFiles/DefendTheSpire.dir/globals.cpp.obj	cf0d19a013c642b4
+43	790	7639093740274764	CMakeFiles/DefendTheSpire.dir/Creeps.cpp.obj	bbcdc3b72b69b6af
+35	1150	7639093740198942	CMakeFiles/DefendTheSpire.dir/game.cpp.obj	d832ff50cbd8516a
+23	386	7639093874730013	CMakeFiles/DefendTheSpire.dir/Draw.cpp.obj	cdb01ccd26a89440
+21	300	7639093946579191	CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.obj	f30d45b653747d2f
+17	616	7639094010384972	CMakeFiles/DefendTheSpire.dir/main.cpp.obj	ccfcd54a7cbe54b4
+617	846	7639094016383932	DefendTheSpire.exe	3404ce44a57c6400

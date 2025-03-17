@@ -1,12 +1,13 @@
 #include "globals.h"
-std::vector<std::vector<Tile>> grid;
 
+Tile grid[GRID_WIDTH][GRID_HEIGHT];
 void initializeGrid() {
-    grid.resize(MAP_HEIGHT, std::vector<Tile>(MAP_WIDTH));
 
-    for (int y = 0; y < MAP_HEIGHT; ++y) {
-        for (int x = 0; x < MAP_WIDTH; ++x) {
-            grid[y][x] = {EMPTY, {x, y}};  // Set each tile as EMPTY with correct coordinates
+
+    for (int y = 0; y < GRID_HEIGHT; ++y) {
+        for (int x = 0; x < GRID_WIDTH; ++x) {
+            grid[y][x] =
+            grid[y][x] = {EMPTY, {y, x}};
         }
     }
 }
