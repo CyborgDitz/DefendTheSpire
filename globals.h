@@ -1,8 +1,8 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#define GRID_WIDTH 16
-#define GRID_HEIGHT 16
+#define GRID_WIDTH 17
+#define GRID_HEIGHT 17
 #define TILE_SIZE 32.0f
 #include <vector>
 //todo tilemap 0 is empty, 1 is tower
@@ -30,6 +30,6 @@ struct Tile
   TileType type;
   Position position;
   };
-extern Tile grid[GRID_WIDTH][GRID_HEIGHT];
+extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
 void initializeGrid();
 #endif //GLOBALS_H
