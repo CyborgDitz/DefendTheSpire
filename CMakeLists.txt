@@ -15,8 +15,8 @@ add_executable(DefendTheSpire main.cpp
     Draw.cpp
         TowerManager.cpp
         globals.cpp
-        game.cpp
-        game.h
+        gameInit.cpp
+        gameInit.h
         TowerManager.h
         Creeps.cpp
         Creeps.h

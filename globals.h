@@ -28,8 +28,7 @@ enum TileType
 struct Tile
   {
   TileType type;
-  Position position;
   };
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
-void initializeGrid();
+
 #endif //GLOBALS_H

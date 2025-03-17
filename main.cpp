@@ -1,4 +1,8 @@
-#include "game.h"
+#include "gameInit.h"
+#include "globals.h"
+#include "raylib.h"
+#include "TowerManager.h"
+#include "Draw.h"
 
 
 int main() {
