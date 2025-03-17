@@ -9,14 +9,7 @@
 //todo 1 click on tile to change to 1
 
 //todo functions: draw tilemap, place tower(bool is occupied), get mouse click on tile
-struct Position
- {
-    int y, x;
- };
-struct Node
- {
-  Position position;
-  };
+
 enum TileType
  {
   EMPTY = 0,
@@ -30,5 +23,5 @@ struct Tile
   TileType type;
   };
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
-
+bool InBounds (int y, int x);
 #endif //GLOBALS_H

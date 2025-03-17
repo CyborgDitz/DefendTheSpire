@@ -4,7 +4,7 @@
 
 #ifndef TOWERMANAGER_H
 #define TOWERMANAGER_H
-bool InBounds (int x, int y);
+
 void ToggleTowerTile(int x, int y);
 void ClickTile();
 #endif //TOWERMANAGER_H

@@ -1,8 +1,6 @@
 #include "globals.h"
 #include "raylib.h"
-bool InBounds(int x, int y) {
- return (x >= 0 && x < GRID_WIDTH && y >= 0 && y < GRID_HEIGHT);
-}
+
 void ToggleTowerTile(int x, int y)
 {
  if (!InBounds(x,y))

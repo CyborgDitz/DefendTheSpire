@@ -3,3 +3,33 @@
 //
 
 #include "Creeps.h"
+
+bool isValid(Position& _position) {
+    return InBounds(_position.y, _position.x) &&
+           (grid[_position.y][_position.x].type == EMPTY || grid[_position.y][_position.x].type == SPIRE);
+}
+
+void BreathFirst(Position _start) {
+    std::queue<Node> frontier;
+    std::map<Position, bool> visited;
+
+    frontier.push(Node(_start, 0));
+    visited[_start] = true;
+
+    while (!frontier.empty()) {
+        Node current = frontier.front();
+        frontier.pop();
+
+        std::cout << "Position (" << current.position.x << ", " << current.position.y
+                  << ") Distance: " << current.distance << std::endl;
+
+        for (int i = 0; i < 4; ++i) {
+            Position nextPosition(current.position.x + DIRECTIONS[i][1], current.position.y + DIRECTIONS[i][0]);
+
+            if (isValid(nextPosition) && visited.find(nextPosition) == visited.end()) {
+                frontier.push(Node(nextPosition, current.distance + 1));
+                visited[nextPosition] = true;
+            }
+        }
+    }
+}
