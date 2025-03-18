@@ -6,9 +6,7 @@
 #define GAME_INIT_H
 
 
-void InitializeEmpty();
-void InitializeSpire();
-void InitializeWall();
+void InitializeTileSwitch(int type, int startY, int sizeY, int startX, int sizeX);
 void InitializeGrid();
-void InitializeEnemies();
+
 #endif //GAME_H

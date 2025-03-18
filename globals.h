@@ -18,6 +18,7 @@ enum TileType
 struct Tile
   {
   TileType type;
+    int startY; int sizeY; int startX; int sizeX;
   };
 
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
