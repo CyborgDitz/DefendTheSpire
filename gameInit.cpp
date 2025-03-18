@@ -27,14 +27,19 @@ void initializeWall() {
 }
 void initializeEnemies() {
     std::vector<Enemy> enemies;
-    enemies.emplace_back(Position{2, 2}, 1, RED);
+   //enemies.emplace_back(Position{2, 2}, 1, RED);
+    for (int y = 2; y < 3; ++y) {
+        for (int x = 2; x < 3; ++x) {
+            grid[y][x] = {CREEP};
+        }
+    }
 }
 
 void initializeGrid() {
     initializeEmpty();
     initializeWall();
     initializeSpire();
-    initializeEnemies();
+   initializeEnemies();
 }
 
 

@@ -38,13 +38,11 @@ void DrawTiles() {
 bool isBGCleared;
 void DrawGame() {
   BeginDrawing();
-  if (isBGCleared) {
+  if (!isBGCleared) {
     ClearBackground(RAYWHITE);
     std::cout<<"BG cleared!" <<std::endl;
    isBGCleared = true;
   }
-
   DrawTiles();
-
   EndDrawing();
 }
