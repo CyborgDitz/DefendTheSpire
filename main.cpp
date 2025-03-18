@@ -7,12 +7,12 @@
 
 int main() {
     InitWindow(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE, "Defend The Spire");
-    initializeGrid();
+    InitializeGrid();
 
-    Position* startPosition = nullptr;
+    Position* startPosition;
 
     if (!enemies.empty()) {
-        startPosition = &enemies.front().position;  // Get the first enemy's position
+        startPosition = &enemies.front().position;
     }
 
     while (!WindowShouldClose()) {
@@ -21,7 +21,10 @@ int main() {
         }
 
         DrawGame();
-        BreathFirst(*startPosition);
+        if (startPosition) {
+            BreathFirst(*startPosition);
+        }
+
     }
 
     CloseWindow();

@@ -3,7 +3,7 @@
 //
 
 #include "Creeps.h"
-
+std::vector<Enemy> enemies;
 bool IsValid(Position& _position) {
     return InBounds(_position.y, _position.x) &&
            (grid[_position.y][_position.x].type == EMPTY || grid[_position.y][_position.x].type == SPIRE);
