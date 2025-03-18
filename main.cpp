@@ -11,8 +11,8 @@ int main() {
 
     Position* startPosition;
 
-    if (!enemies.empty()) {
-        startPosition = &enemies.front().position;
+    if (!creeps.empty()) {
+        startPosition = &creeps.front().position;
     }
 
     while (!WindowShouldClose()) {

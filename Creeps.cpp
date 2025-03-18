@@ -3,7 +3,8 @@
 //
 
 #include "Creeps.h"
-std::vector<Enemy> enemies;
+constexpr extern int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
+std::vector<Creep> creeps;
 bool IsValid(Position& _position) {
     return InBounds(_position.y, _position.x) &&
            (grid[_position.y][_position.x].type == EMPTY || grid[_position.y][_position.x].type == SPIRE);

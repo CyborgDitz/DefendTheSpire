@@ -7,7 +7,7 @@
 #include <map>
 #include <vector>
 #include "raylib.h"
-
+//todo movement
 struct Position {
     int x, y;
 
@@ -19,7 +19,6 @@ struct Position {
         return x == other.x && y == other.y;
     }
 };
-
 struct Node {
     Position position;
     int distance;
@@ -28,20 +27,21 @@ struct Node {
         position(_position), distance(_distance) {}
 };
 
-struct Enemy {
+struct Creep {
     Position position;
     int hp;
     Color color;
 
-    Enemy(Position _position, int _hp = 1, Color _color = RED) :
+    Creep(Position _position, int _hp = 1, Color _color = RED) :
         position(_position), hp(_hp), color(_color) {}
 };
 
-const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
+
 
 bool IsValid(const Position& _position);
 void BreathFirst(Position _start);
 
-extern std::vector<Enemy> enemies;
+
+extern std::vector<Creep> creeps;
 
 #endif // CREEPS_H

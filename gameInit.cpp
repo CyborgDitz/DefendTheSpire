@@ -3,6 +3,7 @@
 #include "globals.h"
 #include "Draw.h"
 #include "TowerManager.h"
+#include "Creeps.h"
 #include "gameInit.h"
 
 void InitializeEmpty(int startY, int sizeY, int startX, int sizeX) {
@@ -30,10 +31,9 @@ void InitializeWall(int startY, int sizeY, int startX, int sizeX) {
 }
 
 void InitializeEnemies(int startY, int sizeY, int startX, int sizeX) {
-    std::vector<Enemy> enemies;
     for (int y = startY; y < startY + sizeY && y < GRID_HEIGHT; ++y) {
         for (int x = startX; x < startX + sizeX && x < GRID_WIDTH; ++x) {
-            enemies.emplace_back(Position{x, y}, 1, RED);
+            creeps.emplace_back(Position{x, y}, 1, RED);
             grid[y][x] = {CREEP};
         }
     }
