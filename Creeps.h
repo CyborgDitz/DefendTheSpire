@@ -6,7 +6,6 @@
 #include <iostream>
 #include <map>
 #include <vector>
-
 #include "raylib.h"
 
 struct Position {
@@ -40,9 +39,9 @@ struct Enemy {
 
 const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 
+bool IsValid(const Position& _position);
+void BreathFirst(Position _start);
 
-bool isValid(Position& _position);
-void bfs(Position _start);
-const std::vector<Enemy> enemies;
+extern std::vector<Enemy> enemies;
 
 #endif // CREEPS_H

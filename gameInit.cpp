@@ -5,7 +5,7 @@
 #include "TowerManager.h"
 #include "gameInit.h"
 
-void initializeEmpty(int startY, int sizeY, int startX, int sizeX) {
+void InitializeEmpty(int startY, int sizeY, int startX, int sizeX) {
     for (int y = startY; y < startY + sizeY && y < GRID_HEIGHT; ++y) {
         for (int x = startX; x < startX + sizeX && x < GRID_WIDTH; ++x) {
             grid[y][x] ={ EMPTY};
@@ -13,7 +13,7 @@ void initializeEmpty(int startY, int sizeY, int startX, int sizeX) {
     }
 }
 
-void initializeSpire(int startY, int sizeY, int startX, int sizeX) {
+void InitializeSpire(int startY, int sizeY, int startX, int sizeX) {
     for (int y = startY; y < startY + sizeY && y < GRID_HEIGHT; ++y) {
         for (int x = startX; x < startX + sizeX && x < GRID_WIDTH; ++x) {
             grid[y][x] = {SPIRE};
@@ -21,7 +21,7 @@ void initializeSpire(int startY, int sizeY, int startX, int sizeX) {
     }
 }
 
-void initializeWall(int startY, int sizeY, int startX, int sizeX) {
+void InitializeWall(int startY, int sizeY, int startX, int sizeX) {
     for (int y = startY; y < startY + sizeY && y < GRID_HEIGHT; ++y) {
         for (int x = startX; x < startX + sizeX && x < GRID_WIDTH; ++x) {
             grid[y][x] ={ WALL};
@@ -29,7 +29,7 @@ void initializeWall(int startY, int sizeY, int startX, int sizeX) {
     }
 }
 
-void initializeEnemies(int startY, int sizeY, int startX, int sizeX) {
+void InitializeEnemies(int startY, int sizeY, int startX, int sizeX) {
     std::vector<Enemy> enemies;
     for (int y = startY; y < startY + sizeY && y < GRID_HEIGHT; ++y) {
         for (int x = startX; x < startX + sizeX && x < GRID_WIDTH; ++x) {
@@ -39,9 +39,9 @@ void initializeEnemies(int startY, int sizeY, int startX, int sizeX) {
     }
 }
 
-void initializeGrid() {
-    initializeEmpty(0, GRID_HEIGHT, 0, GRID_WIDTH);
-    initializeWall(4, 7, 0, 11);
-    initializeSpire(13, 2, 0, 2);
-    initializeEnemies(1, 1, 1, 1);
+void InitializeGrid() {
+    InitializeEmpty(0, GRID_HEIGHT, 0, GRID_WIDTH);
+    InitializeWall(4, 7, 0, 11);
+    InitializeSpire(13, 2, 0, 2);
+    InitializeEnemies(1, 1, 1, 1);
 }

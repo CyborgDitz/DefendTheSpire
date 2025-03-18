@@ -4,7 +4,7 @@
 
 #include "Creeps.h"
 
-bool isValid(Position& _position) {
+bool IsValid(Position& _position) {
     return InBounds(_position.y, _position.x) &&
            (grid[_position.y][_position.x].type == EMPTY || grid[_position.y][_position.x].type == SPIRE);
 }
@@ -26,7 +26,7 @@ void BreathFirst(Position _start) {
         for (int i = 0; i < 4; ++i) {
             Position nextPosition(current.position.x + DIRECTIONS[i][1], current.position.y + DIRECTIONS[i][0]);
 
-            if (isValid(nextPosition) && visited.find(nextPosition) == visited.end()) {
+            if (IsValid(nextPosition) && visited.find(nextPosition) == visited.end()) {
                 frontier.push(Node(nextPosition, current.distance + 1));
                 visited[nextPosition] = true;
             }
