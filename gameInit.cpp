@@ -25,17 +25,18 @@ void initializeWall() {
         }
     }
 }
+void initializeEnemies() {
+    std::vector<Enemy> enemies;
+    enemies.emplace_back(Position{2, 2}, 1, RED);
+}
 
 void initializeGrid() {
     initializeEmpty();
     initializeWall();
     initializeSpire();
+    initializeEnemies();
 }
 
 
 
-void initializeEnemies() {
-    std::vector<Enemy> enemies;
-    enemies.push_back(Enemy(Position{2, 2}, 1, RED));
-}
 

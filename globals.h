@@ -12,6 +12,7 @@ enum TileType
   TOWER = 1,
     WALL = 2,
      SPIRE = 3,
+      CREEP = 4,
   };
 
 struct Tile

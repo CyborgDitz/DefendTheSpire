@@ -3,6 +3,6 @@
 #include "Creeps.h"
 
 
-void DrawGrid();
-void DrawCreeps();
+void DrawTile();
+void DrawGame();
 #endif //DRAW_H

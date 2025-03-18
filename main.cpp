@@ -14,11 +14,7 @@ int main() {
             ClickTile();
         }
 
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawGrid();
-        DrawCreeps();
-        EndDrawing();
+        DrawGame();
     }
 
     CloseWindow();
