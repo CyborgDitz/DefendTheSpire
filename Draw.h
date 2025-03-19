@@ -2,7 +2,5 @@
 #define DRAW_H
 #include "Creeps.h"
 
-
-void DrawTile();
 void DrawGame();
 #endif //DRAW_H

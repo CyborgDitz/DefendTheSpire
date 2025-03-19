@@ -317,29 +317,29 @@ TowerManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.s
 .PHONY : TowerManager.cpp.s
 
-game.obj: game.cpp.obj
-.PHONY : game.obj
+gameInit.obj: gameInit.cpp.obj
+.PHONY : gameInit.obj
 
 # target to build an object file
-game.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/game.cpp.obj
-.PHONY : game.cpp.obj
+gameInit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/gameInit.cpp.obj
+.PHONY : gameInit.cpp.obj
 
-game.i: game.cpp.i
-.PHONY : game.i
+gameInit.i: gameInit.cpp.i
+.PHONY : gameInit.i
 
 # target to preprocess a source file
-game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/game.cpp.i
-.PHONY : game.cpp.i
+gameInit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/gameInit.cpp.i
+.PHONY : gameInit.cpp.i
 
-game.s: game.cpp.s
-.PHONY : game.s
+gameInit.s: gameInit.cpp.s
+.PHONY : gameInit.s
 
 # target to generate assembly for a file
-game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/game.cpp.s
-.PHONY : game.cpp.s
+gameInit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/gameInit.cpp.s
+.PHONY : gameInit.cpp.s
 
 globals.obj: globals.cpp.obj
 .PHONY : globals.obj
@@ -417,9 +417,9 @@ help:
 	@echo ... TowerManager.obj
 	@echo ... TowerManager.i
 	@echo ... TowerManager.s
-	@echo ... game.obj
-	@echo ... game.i
-	@echo ... game.s
+	@echo ... gameInit.obj
+	@echo ... gameInit.i
+	@echo ... gameInit.s
 	@echo ... globals.obj
 	@echo ... globals.i
 	@echo ... globals.s

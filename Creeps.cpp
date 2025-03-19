@@ -15,40 +15,44 @@ bool IsPositionValid(Position& position) {
 }
 void MoveCreeps(int dx, int dy) {
     for (Creep& creep : creeps) {
+        TileType type = grid[creep.position.y][creep.position.x].type;
         Position newPos(creep.position.x + dx, creep.position.y + dy);
+
+        std::cout << creep.position.x + dx<< ", " << creep.position.y + dy <<
+            type << std::endl;
         if (IsPositionValid(newPos)) {
             creep.position = newPos;
         }
-        std::cout << creep.position.x << ", " << creep.position.y << std::endl;
+        std::cout << creep.position.x << ", " << creep.position.y << type<< std::endl;
     }
 }
 
 
 void BreadthFirst(Position& start) {
-    std::queue<Node> frontier;
+    std::queue<Node> node;
     std::map<Position, bool> visited;
 
-    frontier.push(Node(start, 0));
+    node.push(Node(start, 0));
     visited[start] = true;
 
-    while (!frontier.empty()) {
-        Node current = frontier.front();
-        frontier.pop();
+    while (!node.empty()) {
+        Node currentNode = node.front();
+        node.pop();
 
-        std::cout << "Position (" << current.position.x << ", " << current.position.y
-                  << ") Distance: " << current.distance << std::endl;
+        std::cout << "Position (" << currentNode.position.x << ", " << currentNode.position.y
+                  << ") Distance: " << currentNode.distance << std::endl;
 
-        if (IsOnSpire(current.position)) {
+        if (IsOnSpire(currentNode.position)) {
 
-            MoveCreeps(current.position.x,current.position.y);
+            MoveCreeps(currentNode.position.x,currentNode.position.y);
             return;
         }
 
         for (int i = 0; i < 4; ++i) {
-            Position nextPosition(current.position.x + DIRECTIONS[i][1], current.position.y + DIRECTIONS[i][0]);
+            Position nextPosition(currentNode.position.x + DIRECTIONS[i][1], currentNode.position.y + DIRECTIONS[i][0]);
 
             if (IsPositionValid(nextPosition) && visited.find(nextPosition) == visited.end()) {
-                frontier.push(Node(nextPosition, current.distance + 1));
+                node.push(Node(nextPosition, currentNode.distance + 1));
                 visited[nextPosition] = true;
             }
         }
