@@ -10,27 +10,13 @@ bool IsOnSpire(Position& position) {
 bool IsPositionValid(Position& position) {
     if (!InBounds(position.y, position.x))
         return false;
-
-    // Check if the tile is traversable (not a wall or other blocking object)
     TileType type = grid[position.y][position.x].type;
     return type == EMPTY || type == SPIRE;
 }
 void MoveCreeps(Position& targetPosition) {
-    for (auto& creep : creeps) {
-        // Simple movement logic - move towards target
-        // In a real game, you'd want more sophisticated movement
-        int dx = targetPosition.x - creep.position.x;
-        int dy = targetPosition.y - creep.position.y;
-
-        // Move in the direction of the largest difference
-        if (abs(dx) > abs(dy)) {
-            creep.position.x += (dx > 0) ? 1 : -1;
-        } else {
-            creep.position.y += (dy > 0) ? 1 : -1;
-        }
+   // r emoving weird code i dont want
     }
-}
-void BreadthFirst(Position& start) {
+}void BreadthFirst(Position& start) {
     std::queue<Node> frontier;
     std::map<Position, bool> visited;
 
@@ -43,6 +29,12 @@ void BreadthFirst(Position& start) {
 
         std::cout << "Position (" << current.position.x << ", " << current.position.y
                   << ") Distance: " << current.distance << std::endl;
+        
+        if (IsOnSpire(current.position)) {
+
+            MoveCreeps(current.position);
+            return;
+        }
 
         for (int i = 0; i < 4; ++i) {
             Position nextPosition(current.position.x + DIRECTIONS[i][1], current.position.y + DIRECTIONS[i][0]);
@@ -50,10 +42,6 @@ void BreadthFirst(Position& start) {
             if (IsPositionValid(nextPosition) && visited.find(nextPosition) == visited.end()) {
                 frontier.push(Node(nextPosition, current.distance + 1));
                 visited[nextPosition] = true;
-                
-                if (IsOnSpire(nextPosition)) {
-                    MoveCreeps(nextPosition);
-                }
             }
         }
     }

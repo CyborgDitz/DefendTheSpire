@@ -36,10 +36,8 @@ struct Creep {
         position(position), hp(hp), color(color) {}
 };
 
-
-bool IsValid(const Position& position);
 void BreadthFirst(Position& start);
-
+void MoveCreeps(Position& targetPosition);
 
 extern std::vector<Creep> creeps;
 
