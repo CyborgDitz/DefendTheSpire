@@ -10,6 +10,6 @@
 -- Compiling with the flags:
 --   PLATFORM=PLATFORM_DESKTOP
 --   GRAPHICS=GRAPHICS_API_OPENGL_33
--- Configuring done (1.0s)
+-- Configuring done (1.5s)
 -- Generating done (0.2s)
 -- Build files have been written to: C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug

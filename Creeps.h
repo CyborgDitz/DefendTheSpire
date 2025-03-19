@@ -37,7 +37,6 @@ struct Creep {
 };
 
 
-
 bool IsValid(const Position& _position);
 void BreathFirst(Position _start);
 

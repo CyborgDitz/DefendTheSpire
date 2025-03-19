@@ -9,11 +9,9 @@ int main() {
     InitWindow(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE, "Defend The Spire");
     InitializeGrid();
 
-    Position* startPosition;
+    Position *startPosition = &creeps.front().position;
+    Position *endPosition = &creeps.back().position;
 
-    if (!creeps.empty()) {
-        startPosition = &creeps.front().position;
-    }
 
     while (!WindowShouldClose()) {
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
@@ -21,7 +19,7 @@ int main() {
         }
 
         DrawGame();
-        if (startPosition) {
+        if (IsKeyDown(KEY_SPACE)&& endPosition !=nullptr && startPosition !=nullptr) {
             BreathFirst(*startPosition);
         }
 
