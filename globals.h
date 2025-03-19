@@ -20,7 +20,18 @@ struct Tile
   TileType type;
     int startY; int sizeY; int startX; int sizeX;
   };
+struct Position {
+    int x, y;
+
+    bool operator<(const Position& other) const {
+        return (x < other.x) || (x == other.x && y < other.y);
+    }
+
+    bool operator==(const Position& other) const {
+        return x == other.x && y == other.y;
+    }
+};
 
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
-bool InBounds (int y, int x);
+bool InBounds (Position position);
 #endif //GLOBALS_H

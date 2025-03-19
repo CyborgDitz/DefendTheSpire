@@ -1,14 +1,14 @@
 #include "globals.h"
 #include "raylib.h"
 
-void ToggleTowerTile(int x, int y)
+void ToggleTowerTile(Position& position)
 {
- if (!InBounds(x,y))
+ if (!InBounds(position))
   {
    return;
   }
 
- Tile& tile = grid[y][x];
+ Tile& tile = grid[position.y][position.x];
  switch (tile.type)
  {
   case EMPTY:
@@ -22,12 +22,16 @@ void ToggleTowerTile(int x, int y)
  }
 // Draw updates tile color later in main
 }
-
 void ClickTile() {
  Vector2 mousePosition = GetMousePosition();
  int x = mousePosition.x / (GetScreenWidth() / GRID_WIDTH);
  int y = mousePosition.y / (GetScreenHeight() / GRID_HEIGHT);
 
- if (InBounds(x, y)) ToggleTowerTile(x, y);
-}
+ Position clickedPosition = {x, y};
 
+
+ if (InBounds(clickedPosition)) {
+
+  ToggleTowerTile(clickedPosition);
+ }
+}

@@ -8,7 +8,7 @@ bool IsOnSpire(const Position& position) {
     return grid[position.y][position.x].type == SPIRE;
 }
 bool IsPositionValid(const Position& position) {
-    if (!InBounds(position.y, position.x))
+    if (!InBounds(position))
         return false;
     const Tile& tilePosition = grid[position.y][position.x];
     return tilePosition.type == EMPTY || tilePosition.type == SPIRE;
