@@ -13,10 +13,17 @@ bool IsPositionValid(Position& position) {
     TileType type = grid[position.y][position.x].type;
     return type == EMPTY || type == SPIRE;
 }
-void MoveCreeps(Position& targetPosition) {
-   // r emoving weird code i dont want
+void MoveCreeps(int dx, int dy) {
+    for (Creep& creep : creeps) {
+        Position newPos(creep.position.x + dx, creep.position.y + dy);
+        if (IsPositionValid(newPos)) {
+            creep.position = newPos;
+        }
     }
-}void BreadthFirst(Position& start) {
+}
+
+
+void BreadthFirst(Position& start) {
     std::queue<Node> frontier;
     std::map<Position, bool> visited;
 
@@ -29,10 +36,10 @@ void MoveCreeps(Position& targetPosition) {
 
         std::cout << "Position (" << current.position.x << ", " << current.position.y
                   << ") Distance: " << current.distance << std::endl;
-        
+
         if (IsOnSpire(current.position)) {
 
-            MoveCreeps(current.position);
+            MoveCreeps(current.position.x,current.position.y);
             return;
         }
 

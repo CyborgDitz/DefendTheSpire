@@ -14,14 +14,15 @@ int main() {
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             ClickTile();
         }
-
-        DrawGame();
+        if (IsKeyPressed(KEY_UP))    MoveCreeps(0, -1);
+        if (IsKeyPressed(KEY_DOWN))  MoveCreeps(0, 1);
+        if (IsKeyPressed(KEY_LEFT))  MoveCreeps(-1, 0);
+        if (IsKeyPressed(KEY_RIGHT)) MoveCreeps(1, 0);
         if (IsKeyDown(KEY_SPACE)){
             BreadthFirst(start);
         }
-
+        DrawGame();
     }
-
     CloseWindow();
     return 0;
 }

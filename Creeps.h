@@ -37,7 +37,7 @@ struct Creep {
 };
 
 void BreadthFirst(Position& start);
-void MoveCreeps(Position& targetPosition);
+void MoveCreeps(int dx, int dy);
 
 extern std::vector<Creep> creeps;
 
