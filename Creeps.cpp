@@ -8,13 +8,29 @@ bool IsOnSpire(Position& position) {
     return grid[position.y][position.x].type == SPIRE;
 }
 bool IsPositionValid(Position& position) {
-    return InBounds(position.y, position.x) &&
-           (grid[position.y][position.x].type == EMPTY || IsOnSpire);
+    if (!InBounds(position.y, position.x))
+        return false;
+
+    // Check if the tile is traversable (not a wall or other blocking object)
+    TileType type = grid[position.y][position.x].type;
+    return type == EMPTY || type == SPIRE;
 }
 void MoveCreeps(Position& targetPosition) {
-  
+    for (auto& creep : creeps) {
+        // Simple movement logic - move towards target
+        // In a real game, you'd want more sophisticated movement
+        int dx = targetPosition.x - creep.position.x;
+        int dy = targetPosition.y - creep.position.y;
+
+        // Move in the direction of the largest difference
+        if (abs(dx) > abs(dy)) {
+            creep.position.x += (dx > 0) ? 1 : -1;
+        } else {
+            creep.position.y += (dy > 0) ? 1 : -1;
+        }
+    }
 }
-void BreathFirst(Position& start) {
+void BreadthFirst(Position& start) {
     std::queue<Node> frontier;
     std::map<Position, bool> visited;
 

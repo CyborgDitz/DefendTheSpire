@@ -23,8 +23,8 @@ struct Node {
     Position position;
     int distance;
 
-    Node(Position _position, int _distance) :
-        position(_position), distance(_distance) {}
+    Node(Position position, int distance) :
+        position(position), distance(distance) {}
 };
 
 struct Creep {
@@ -32,13 +32,13 @@ struct Creep {
     int hp;
     Color color;
 
-    Creep(Position _position, int _hp = 1, Color _color = RED) :
-        position(_position), hp(_hp), color(_color) {}
+    Creep(Position position, int hp = 1, Color color = RED) :
+        position(position), hp(hp), color(color) {}
 };
 
 
-bool IsValid(const Position& _position);
-void BreathFirst(Position _start);
+bool IsValid(const Position& position);
+void BreadthFirst(Position& start);
 
 
 extern std::vector<Creep> creeps;
