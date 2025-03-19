@@ -4,30 +4,30 @@ constexpr extern int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 std::vector<Creep> creeps;
 
 
-bool IsOnSpire(Position& position) {
+bool IsOnSpire(const Position& position) {
     return grid[position.y][position.x].type == SPIRE;
 }
-bool IsPositionValid(Position& position) {
+bool IsPositionValid(const Position& position) {
     if (!InBounds(position.y, position.x))
         return false;
-    Tile& tile = grid[position.y][position.x];
-    return tile.type == EMPTY || tile.type == SPIRE;
+    const Tile& tilePosition = grid[position.y][position.x];
+    return tilePosition.type == EMPTY || tilePosition.type == SPIRE;
 }
-void MoveCreeps(int dx, int dy) {
+void MoveCreeps(const int dx, const int dy) {
     for (Creep& creep : creeps) {
-        Tile& tile = grid[creep.position.y][creep.position.x];
+        const Tile& tileCreepPosition = grid[creep.position.y][creep.position.x];
         Position newPos(creep.position.x + dx, creep.position.y + dy);
 
-        std::cout <<"NewPosition: " << newPos.x << ", " << newPos.y << tile.type << std::endl;
+        std::cout <<"NewPosition: " << newPos.x << ", " << newPos.y << tileCreepPosition.type << std::endl;
         if (IsPositionValid(newPos)) {
             creep.position = newPos;
         }
-        std::cout << "Current position; " << creep.position.x << ", " << creep.position.y << tile.type << std::endl;
+        std::cout << "Current position; " << creep.position.x << ", " << creep.position.y << tileCreepPosition.type << std::endl;
     }
 }
 
 
-void BreadthFirst(Position& start) {
+void BreadthFirst(const Position& start) {
     std::queue<Node> node;
     std::map<Position, bool> visited;
 
