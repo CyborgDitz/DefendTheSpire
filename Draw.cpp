@@ -2,6 +2,7 @@
 #include "Raylib.h"
 #include "globals.h"
 #include "Creeps.h"
+// todo moveto pathfinding
 void DrawTiles() {
   for (int y = 0; y < GRID_HEIGHT; y++) {
     for (int x = 0; x < GRID_WIDTH; x++) {
@@ -21,9 +22,7 @@ void DrawTiles() {
         case SPIRE:
           tileColor = PINK;
         break;
-        case CREEP:
-          tileColor = RED;
-        break;
+
         default:
           tileColor = RAYWHITE;
         break;
@@ -35,14 +34,15 @@ void DrawTiles() {
     }
   }
 }
-bool isBGCleared;
+void DrawCreeps() {
+  for (const Creep& creep : creeps) {
+    DrawRectangle(creep.position.x * TILE_SIZE, creep.position.y * TILE_SIZE, TILE_SIZE, TILE_SIZE, RED);
+  }
+}
 void DrawGame() {
   BeginDrawing();
-  if (!isBGCleared) {
-    ClearBackground(RAYWHITE);
-    std::cout<<"BG cleared!" <<std::endl;
-   isBGCleared = true;
-  }
+  ClearBackground(RAYWHITE);
   DrawTiles();
+  DrawCreeps();
   EndDrawing();
 }

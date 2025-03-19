@@ -19,6 +19,7 @@ void MoveCreeps(int dx, int dy) {
         if (IsPositionValid(newPos)) {
             creep.position = newPos;
         }
+        std::cout << creep.position.x << ", " << creep.position.y << std::endl;
     }
 }
 

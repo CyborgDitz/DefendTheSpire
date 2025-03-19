@@ -11,6 +11,7 @@ int main() {
     Position start(2,2);
 
     while (!WindowShouldClose()) {
+        DrawGame();
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             ClickTile();
         }
@@ -21,7 +22,7 @@ int main() {
         if (IsKeyDown(KEY_SPACE)){
             BreadthFirst(start);
         }
-        DrawGame();
+
     }
     CloseWindow();
     return 0;
