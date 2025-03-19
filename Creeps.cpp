@@ -10,20 +10,19 @@ bool IsOnSpire(Position& position) {
 bool IsPositionValid(Position& position) {
     if (!InBounds(position.y, position.x))
         return false;
-    TileType type = grid[position.y][position.x].type;
-    return type == EMPTY || type == SPIRE;
+    Tile& tile = grid[position.y][position.x];
+    return tile.type == EMPTY || tile.type == SPIRE;
 }
 void MoveCreeps(int dx, int dy) {
     for (Creep& creep : creeps) {
-        TileType type = grid[creep.position.y][creep.position.x].type;
+        Tile& tile = grid[creep.position.y][creep.position.x];
         Position newPos(creep.position.x + dx, creep.position.y + dy);
 
-        std::cout << creep.position.x + dx<< ", " << creep.position.y + dy <<
-            type << std::endl;
+        std::cout <<"NewPosition: " << newPos.x << ", " << newPos.y << tile.type << std::endl;
         if (IsPositionValid(newPos)) {
             creep.position = newPos;
         }
-        std::cout << creep.position.x << ", " << creep.position.y << type<< std::endl;
+        std::cout << "Current position; " << creep.position.x << ", " << creep.position.y << tile.type << std::endl;
     }
 }
 
@@ -43,8 +42,7 @@ void BreadthFirst(Position& start) {
                   << ") Distance: " << currentNode.distance << std::endl;
 
         if (IsOnSpire(currentNode.position)) {
-
-            MoveCreeps(currentNode.position.x,currentNode.position.y);
+            MoveCreeps(currentNode.position.x, currentNode.position.y);
             return;
         }
 
