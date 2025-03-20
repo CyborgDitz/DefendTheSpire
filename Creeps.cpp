@@ -42,7 +42,9 @@ void BreadthFirst(const Position& start) {
                   << ") Distance: " << currentNode.distance << std::endl;
 
         if (IsOnSpire(currentNode.position)) {
-            MoveCreeps(currentNode.position.x, currentNode.position.y);
+            int dx = currentNode.position.x - creeps[0].position.x;
+            int dy = currentNode.position.y - creeps[0].position.y;
+            MoveCreeps(dx, dy);
             return;
         }
 

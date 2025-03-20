@@ -18,7 +18,7 @@ void InitializeTileSwitch(const Tile& tile) {
                     grid[y][x] = {WALL};
                 break;
                 case CREEP:
-                    creeps.emplace_back(Position{x, y}, 1, RED);
+                    creeps.emplace_back(Position{y, x}, 1, RED);
                 grid[y][x] = {CREEP};
                 break;
                 default:

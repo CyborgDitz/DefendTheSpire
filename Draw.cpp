@@ -2,13 +2,12 @@
 #include "Raylib.h"
 #include "globals.h"
 #include "Creeps.h"
-// todo moveto pathfinding
+Color tileColor;
 void DrawTiles() {
   for (int y = 0; y < GRID_HEIGHT; y++) {
     for (int x = 0; x < GRID_WIDTH; x++) {
       const Rectangle tileRect = { (x * TILE_SIZE), (y * TILE_SIZE), TILE_SIZE, TILE_SIZE };
 
-      Color tileColor;
       switch (grid[y][x].type) {
         case EMPTY:
           tileColor = RAYWHITE;

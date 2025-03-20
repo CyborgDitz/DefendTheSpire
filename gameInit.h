@@ -4,9 +4,9 @@
 
 #ifndef GAME_INIT_H
 #define GAME_INIT_H
+#include "globals.h"
 
-
-void InitializeTileSwitch(int type, int startY, int sizeY, int startX, int sizeX);
+void InitializeTileSwitch(Tile& tile);
 void InitializeGrid();
 
 #endif //GAME_H
