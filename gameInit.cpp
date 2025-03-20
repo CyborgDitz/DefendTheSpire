@@ -4,10 +4,9 @@
 #include "Draw.h"
 #include "Creeps.h"
 #include "gameInit.h"
-
 void InitializeTileSwitch(const Tile& tile) {
-    for (int y = tile.startY; y < tile.startY + tile.sizeY && y < GRID_HEIGHT; ++y) {
-        for (int x = tile.startX; x < tile.startX + tile.sizeX && x < GRID_WIDTH; ++x) {
+    for (int y = tile.position.y; y < tile.position.y + tile.columns && y < GRID_HEIGHT; ++y) {
+        for (int x = tile.position.x; x < tile.position.x + tile.rows && x < GRID_WIDTH; ++x) {
             switch (tile.type) {
                 case EMPTY:
                     grid[y][x] = {EMPTY};
@@ -29,14 +28,17 @@ void InitializeTileSwitch(const Tile& tile) {
     }
 }
 
+
+
 void InitializeGrid() {
-    constexpr Tile emptyTile = {EMPTY, 0, GRID_HEIGHT, 0, GRID_WIDTH};
-    constexpr Tile wallTile = {WALL, 4, 7, 0, 11};
-    constexpr Tile spireTile = {SPIRE, 13, 2, 0, 2};
-    constexpr Tile creepTile = {CREEP, 1, 1, 1, 1};
+    constexpr Tile emptyTile = {EMPTY, {0, 0}, GRID_HEIGHT, GRID_WIDTH};
+    constexpr Tile wallTile = {WALL, {0, 4}, 11, 7};
+    constexpr Tile spireTile = {SPIRE, {0, 13}, 2, 2};
+    constexpr Tile creepTile = {CREEP, {1, 1}, 1, 1};
 
     InitializeTileSwitch(emptyTile);
     InitializeTileSwitch(wallTile);
     InitializeTileSwitch(spireTile);
     InitializeTileSwitch(creepTile);
 }
+

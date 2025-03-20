@@ -15,11 +15,6 @@ enum TileType
       CREEP = 4,
   };
 
-struct Tile
-  {
-  TileType type;
-    int startY; int sizeY; int startX; int sizeX;
-  };
 struct Position {
     int x, y;
 
@@ -31,6 +26,14 @@ struct Position {
         return x == other.x && y == other.y;
     }
 };
+struct Tile {
+    TileType type;
+    Position position;
+    int rows;
+    int columns;
+};
+
+
 
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
 bool InBounds (Position position);
