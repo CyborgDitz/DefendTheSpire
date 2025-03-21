@@ -41,6 +41,8 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
 
         for (const auto& dir : DIRECTIONS) {
             Position nextPos = { currentNode.position.x + dir[1], currentNode.position.y + dir[0] };
+
+            // Only proceed if the next position is valid
             if (IsPositionValid(nextPos) && visited.find(nextPos) == visited.end()) {
                 nodeQueue.push(Node(nextPos, currentNode.distance + 1));
                 visited[nextPos] = true;
@@ -67,6 +69,7 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
     return path;
 }
 
+
 void SpawnCreep(const Position& position) {
     Creep newCreep(position);
     newCreep.path = BreadthFirstPath(position);
@@ -86,29 +89,49 @@ void MoveCreeps(float deltaTime) {
             continue;
         }
 
-        if (creep.path.empty() || creep.path.find(creep.pathStep) == creep.path.end() ||
-            !IsPositionValid(creep.path[creep.pathStep])) {
+        if (creep.path.empty() || !IsPositionValid(creep.path[creep.pathStep])) {
+            std::cout << "Recalculating path for creep at position ("
+                      << creep.position.x << ", " << creep.position.y << ")\n";
+
             creep.path = BreadthFirstPath(creep.position);
             creep.pathStep = 0;
+
+        if (!creep.path.empty()) {
+            if (creep.pathStep < creep.path.size()) {
+                grid[creep.position.y][creep.position.x].type = EMPTY;
+                creep.position = creep.path[creep.pathStep++];
+                grid[creep.position.y][creep.position.x].type = CREEP;
+            }
+        } else {
+
+            bool moved = false;
+            for (const auto& dir : DIRECTIONS) {
+                Position nextPos = { creep.position.y + dir[1], creep.position.x + dir[1] };
+
+                if (IsPositionValid(nextPos)) {
+                    grid[creep.position.y][creep.position.x].type = EMPTY;
+                    creep.position = nextPos;
+                    grid[creep.position.y][creep.position.x].type = CREEP;
+                    moved = true;
+                    break;
+                }
             }
 
-        if (creep.path.empty()) {
-            creep.moveTimer = 0.0f;
-            ++creepPos;
-            continue;
+            if (!moved) {
+                ++creepPos;
+                continue;
+            }
         }
 
-        grid[creep.position.y][creep.position.x].type = EMPTY;
-        creep.position = creep.path[creep.pathStep++];
-        grid[creep.position.y][creep.position.x].type = CREEP;
+            creep.moveTimer = 0.0f;
 
-        creep.moveTimer = 0.0f;
-
-        if (IsOnSpire(creep.position)) {
-            std::cout << "Creep reached the spire!" << std::endl;
-            creepPos = creeps.erase(creepPos);
-        } else {
-            ++creepPos;
+            if (IsOnSpire(creep.position)) {
+                std::cout << "Creep reached the spire at position ("
+                          << creep.position.x << ", " << creep.position.y << ")\n";
+                creepPos = creeps.erase(creepPos);
+            } else {
+                ++creepPos;
+            }
         }
     }
 }

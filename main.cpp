@@ -13,18 +13,26 @@ int main() {
     Position startPosition{1, 1};
 
 
-   // SpawnCreep(startPosition);
 
     float spawnTimer = 0.0f;
     const float SPAWN_INTERVAL = 5.0f;
 
+    float inputTimer = 0.0f;
+    const float INPUT_INTERVAL = 0.5f;
+
     while (!WindowShouldClose()) {
         float deltaTime = GetFrameTime();
 
-        MoveCreeps(deltaTime);
+        inputTimer += deltaTime;
 
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && inputTimer >= INPUT_INTERVAL) {
             ClickTile();
+            inputTimer = 0.0f;
+            for (auto& creep : creeps) {
+                creep.path = BreadthFirstPath(creep.position);
+                creep.pathStep = 0;
+            }
         }
 
         spawnTimer += deltaTime;
@@ -32,14 +40,8 @@ int main() {
             SpawnCreep(startPosition);
             spawnTimer = 0.0f;
         }
-
-        if (IsKeyPressed(KEY_SPACE)) {
-            BreadthFirstPath(startPosition);
-        }
-
+        MoveCreeps(deltaTime);
+        
         DrawGame();
     }
-
-    CloseWindow();
-    return 0;
 }
