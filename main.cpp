@@ -7,23 +7,39 @@
 
 int main() {
     InitWindow(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE, "Defend The Spire");
+    SetTargetFPS(60);  // Set to 60 FPS
+
     InitializeGrid();
-    Position start(2,2);
+    Position startPosition{1, 1};
+
+
+   // SpawnCreep(startPosition);
+
+    float spawnTimer = 0.0f;
+    const float SPAWN_INTERVAL = 5.0f;
 
     while (!WindowShouldClose()) {
-        DrawGame();
+        float deltaTime = GetFrameTime();
+
+        MoveCreeps(deltaTime);
+
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             ClickTile();
         }
-        if (IsKeyPressed(KEY_UP))    MoveCreeps(0, -1);
-        if (IsKeyPressed(KEY_DOWN))  MoveCreeps(0, 1);
-        if (IsKeyPressed(KEY_LEFT))  MoveCreeps(-1, 0);
-        if (IsKeyPressed(KEY_RIGHT)) MoveCreeps(1, 0);
-        if (IsKeyDown(KEY_SPACE)){
-            BreadthFirst(start);
+
+        spawnTimer += deltaTime;
+        if (spawnTimer >= SPAWN_INTERVAL) {
+            SpawnCreep(startPosition);
+            spawnTimer = 0.0f;
         }
 
+        if (IsKeyPressed(KEY_SPACE)) {
+            BreadthFirstPath(startPosition);
+        }
+
+        DrawGame();
     }
+
     CloseWindow();
     return 0;
 }

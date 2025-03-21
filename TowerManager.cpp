@@ -20,7 +20,7 @@ void ToggleTowerTile(Position& position)
   default:
    break;
  }
-// Draw updates tile color later in main
+
 }
 void ClickTile() {
  Vector2 mousePosition = GetMousePosition();

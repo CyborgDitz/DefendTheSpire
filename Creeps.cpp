@@ -1,87 +1,114 @@
 #include "Creeps.h"
 #include <stack>
-constexpr extern int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
+
+const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 std::vector<Creep> creeps;
-Position creepPathing;
+constexpr float MOVE_TIMER = 1.0f;
 
 bool IsOnSpire(const Position& position) {
     return grid[position.y][position.x].type == SPIRE;
 }
+
 bool IsPositionValid(const Position& position) {
-    if (!InBounds(position))
-        return false;
-    const Tile& tilePosition = grid[position.y][position.x];
-    return tilePosition.type == EMPTY || tilePosition.type == SPIRE;
-}
-void MoveCreeps(const int dx, const int dy) {
-    for (Creep& creep : creeps) {
-        const Tile& tileCreepPosition = grid[creep.position.y][creep.position.x];
-        Position newPos(creep.position.x + dx, creep.position.y + dy);
+    if (!InBounds(position)) return false;
+    const Tile& tile = grid[position.y][position.x];
 
-        std::cout <<"NewPosition: " << newPos.x << ", " << newPos.y << tileCreepPosition.type << std::endl;
-        if (IsPositionValid(newPos)) {
-            creep.position = newPos;
-        }
-        std::cout << "Current position; " << creep.position.x << ", " << creep.position.y << tileCreepPosition.type << std::endl;
-    }
+    return (tile.type == EMPTY || tile.type == SPIRE);
 }
 
 
-void BreadthFirst(const Position& start) {
-    std::queue<Node> node;
+std::map<int, Position> BreadthFirstPath(const Position& start) {
+    std::queue<Node> nodeQueue;
+    std::map<Position, Position> cameFrom;
+    std::map<int, Position> path;
+
+    nodeQueue.push(Node(start, 0));
     std::map<Position, bool> visited;
-    std::map<Position, Position> predecessors; // To track the path
-
-    node.push(Node(start, 0));
     visited[start] = true;
 
-    bool foundSpire = false;
     Position spirePosition;
+    bool found = false;
 
-    while (!node.empty()) {
-        Node currentNode = node.front();
-        node.pop();
-
-        std::cout << "Position (" << currentNode.position.x << ", " << currentNode.position.y
-                  << ") Distance: " << currentNode.distance << std::endl;
+    while (!nodeQueue.empty()) {
+        Node currentNode = nodeQueue.front();
+        nodeQueue.pop();
 
         if (IsOnSpire(currentNode.position)) {
-            spirePosition = currentNode.position;  // Record the spire position
-            foundSpire = true;
+            spirePosition = currentNode.position;
+            found = true;
             break;
         }
 
-        for (int i = 0; i < 4; ++i) {
-            Position nextPosition(currentNode.position.x + DIRECTIONS[i][1], currentNode.position.y + DIRECTIONS[i][0]);
-
-            if (IsPositionValid(nextPosition) && visited.find(nextPosition) == visited.end()) {
-                node.push(Node(nextPosition, currentNode.distance + 1));
-                visited[nextPosition] = true;
-                predecessors[nextPosition] = currentNode.position;  // Record the predecessor
+        for (const auto& dir : DIRECTIONS) {
+            Position nextPos = { currentNode.position.x + dir[1], currentNode.position.y + dir[0] };
+            if (IsPositionValid(nextPos) && visited.find(nextPos) == visited.end()) {
+                nodeQueue.push(Node(nextPos, currentNode.distance + 1));
+                visited[nextPos] = true;
+                cameFrom[nextPos] = currentNode.position;
             }
         }
     }
 
-    if (foundSpire) {
-        std::stack<Position> path;
-        Position current = spirePosition;
+    if (!found) return {};
 
-        while (current != start) {
-            path.push(current);
-            current = predecessors[current];
+    std::stack<Position> pathStack;
+    Position current = spirePosition;
+    while (current != start) {
+        pathStack.push(current);
+        current = cameFrom[current];
+    }
+
+    int step = 0;
+    while (!pathStack.empty()) {
+        path[step++] = pathStack.top();
+        pathStack.pop();
+    }
+
+    return path;
+}
+
+void SpawnCreep(const Position& position) {
+    Creep newCreep(position);
+    newCreep.path = BreadthFirstPath(position);
+
+    if (!newCreep.path.empty()) {
+        creeps.push_back(newCreep);
+        grid[position.y][position.x].type = CREEP;
+    }
+}
+void MoveCreeps(float deltaTime) {
+    for (auto creepPos = creeps.begin(); creepPos != creeps.end();) {
+        Creep& creep = *creepPos;
+        creep.moveTimer += deltaTime;
+
+        if (creep.moveTimer < MOVE_TIMER) {
+            ++creepPos;
+            continue;
         }
 
-        path.push(start);
+        if (creep.path.empty() || creep.path.find(creep.pathStep) == creep.path.end() ||
+            !IsPositionValid(creep.path[creep.pathStep])) {
+            creep.path = BreadthFirstPath(creep.position);
+            creep.pathStep = 0;
+            }
 
-        std::cout << "Path to spire: ";
-        while (!path.empty()) {
-            Position creepPathing = path.top();
-            path.pop();
-            std::cout << "(" << creepPathing.x << ", " << creepPathing.y << ") ";
+        if (creep.path.empty()) {
+            creep.moveTimer = 0.0f;
+            ++creepPos;
+            continue;
         }
-        std::cout << std::endl;
 
-        // Optionally, move the creeps to follow the path
-        // Here you would probably want to move the creeps step-by-step, but this example prints the path
+        grid[creep.position.y][creep.position.x].type = EMPTY;
+        creep.position = creep.path[creep.pathStep++];
+        grid[creep.position.y][creep.position.x].type = CREEP;
+
+        creep.moveTimer = 0.0f;
+
+        if (IsOnSpire(creep.position)) {
+            std::cout << "Creep reached the spire!" << std::endl;
+            creepPos = creeps.erase(creepPos);
+        } else {
+            ++creepPos;
+        }
     }
 }
