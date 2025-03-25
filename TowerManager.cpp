@@ -1,3 +1,6 @@
+#include <iostream>
+#include <ostream>
+
 #include "globals.h"
 #include "raylib.h"
 
@@ -28,10 +31,9 @@ void ClickTile() {
  int y = mousePosition.y / (GetScreenHeight() / GRID_HEIGHT);
 
  Position clickedPosition = {x, y};
-
+std::cout << "clicked here: " << clickedPosition.x << ", " << clickedPosition.y << std::endl;
 
  if (InBounds(clickedPosition)) {
-
   ToggleTowerTile(clickedPosition);
  }
 }

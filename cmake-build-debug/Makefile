@@ -317,30 +317,6 @@ TowerManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.s
 .PHONY : TowerManager.cpp.s
 
-debug.obj: debug.cpp.obj
-.PHONY : debug.obj
-
-# target to build an object file
-debug.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/debug.cpp.obj
-.PHONY : debug.cpp.obj
-
-debug.i: debug.cpp.i
-.PHONY : debug.i
-
-# target to preprocess a source file
-debug.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/debug.cpp.i
-.PHONY : debug.cpp.i
-
-debug.s: debug.cpp.s
-.PHONY : debug.s
-
-# target to generate assembly for a file
-debug.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DefendTheSpire.dir\build.make CMakeFiles/DefendTheSpire.dir/debug.cpp.s
-.PHONY : debug.cpp.s
-
 gameInit.obj: gameInit.cpp.obj
 .PHONY : gameInit.obj
 
@@ -441,9 +417,6 @@ help:
 	@echo ... TowerManager.obj
 	@echo ... TowerManager.i
 	@echo ... TowerManager.s
-	@echo ... debug.obj
-	@echo ... debug.i
-	@echo ... debug.s
 	@echo ... gameInit.obj
 	@echo ... gameInit.i
 	@echo ... gameInit.s

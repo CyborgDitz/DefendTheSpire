@@ -5,8 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/DefendTheSpire.dir/Draw.cpp.obj.d"
   "CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.obj"
   "CMakeFiles/DefendTheSpire.dir/TowerManager.cpp.obj.d"
-  "CMakeFiles/DefendTheSpire.dir/debug.cpp.obj"
-  "CMakeFiles/DefendTheSpire.dir/debug.cpp.obj.d"
   "CMakeFiles/DefendTheSpire.dir/gameInit.cpp.obj"
   "CMakeFiles/DefendTheSpire.dir/gameInit.cpp.obj.d"
   "CMakeFiles/DefendTheSpire.dir/globals.cpp.obj"
