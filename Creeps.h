@@ -9,25 +9,10 @@
 #include <stack>
 #include "raylib.h"
 
-struct Node {
-    Position position;
-    int distance;
 
-    Node(Position position, int distance) :
-        position(position), distance(distance) {}
-};
+struct Node;
+struct Creep;
 
-struct Creep {
-    Position position;
-    int hp;
-    Color color;
-    std::map<int, Position> path;
-    int pathStep;
-    float moveTimer;
-
-    Creep(Position position, int hp = 1, Color color = RED) :
-        position(position), hp(hp), color(color), pathStep(0), moveTimer(0.0f) {}
-};
 
 std::map<int, Position> BreadthFirstPath(const Position& start);
 bool IsPositionValid(const Position& position);
