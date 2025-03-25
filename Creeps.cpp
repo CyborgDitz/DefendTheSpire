@@ -1,4 +1,6 @@
 #include "Creeps.h"
+
+#include <chrono>
 #include <stack>
 
 const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
@@ -18,6 +20,7 @@ bool IsPositionValid(const Position& position) {
 
 
 std::map<int, Position> BreadthFirstPath(const Position& start) {
+    auto startTime = std::chrono::high_resolution_clock::now(); // Start timing
     std::queue<Node> nodeQueue;
     std::map<Position, Position> cameFrom;
     std::map<int, Position> path;
@@ -65,7 +68,9 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
         path[step++] = pathStack.top();
         pathStack.pop();
     }
-
+    auto endTime = std::chrono::high_resolution_clock::now(); // End timer
+    std::chrono::duration<double> elapsed = endTime - startTime;
+    std::cout << "BreadthFirstPath execution time: " << elapsed.count() << " seconds\n";
     return path;
 }
 
@@ -79,7 +84,22 @@ void SpawnCreep(const Position& position) {
         grid[position.y][position.x].type = CREEP;
     }
 }
+bool WeirdMove(Creep& creep) {
+    for (const auto& dir : DIRECTIONS) {
+        Position nextPos = { creep.position.x + dir[1], creep.position.y + dir[0] };
+
+        if (IsPositionValid(nextPos)) {
+            grid[creep.position.y][creep.position.x].type = EMPTY;
+            creep.position = nextPos;
+            grid[creep.position.y][creep.position.x].type = CREEP;
+            return true;
+        }
+    }
+    return false;
+}
 void MoveCreeps(float deltaTime) {
+    auto startTime = std::chrono::high_resolution_clock::now();
+
     for (auto creepPos = creeps.begin(); creepPos != creeps.end();) {
         Creep& creep = *creepPos;
         creep.moveTimer += deltaTime;
@@ -89,49 +109,36 @@ void MoveCreeps(float deltaTime) {
             continue;
         }
 
-        if (creep.path.empty() || !IsPositionValid(creep.path[creep.pathStep])) {
-            std::cout << "Recalculating path for creep at position ("
-                      << creep.position.x << ", " << creep.position.y << ")\n";
+        creep.moveTimer = 0.0f;
 
+        if (creep.path.empty() || !IsPositionValid(creep.path[creep.pathStep])) {
+            std::cout << "Recalculating path for creep at (" << creep.position.x << ", " << creep.position.y << ")\n";
             creep.path = BreadthFirstPath(creep.position);
             creep.pathStep = 0;
+        }
 
-        if (!creep.path.empty()) {
-            if (creep.pathStep < creep.path.size()) {
-                grid[creep.position.y][creep.position.x].type = EMPTY;
-                creep.position = creep.path[creep.pathStep++];
-                grid[creep.position.y][creep.position.x].type = CREEP;
-            }
+        if (!creep.path.empty() && creep.pathStep < creep.path.size()) {
+            grid[creep.position.y][creep.position.x].type = EMPTY;
+            creep.position = creep.path[creep.pathStep++];
+            grid[creep.position.y][creep.position.x].type = CREEP;
         } else {
 
-            bool moved = false;
-            for (const auto& dir : DIRECTIONS) {
-                Position nextPos = { creep.position.y + dir[1], creep.position.x + dir[1] };
-
-                if (IsPositionValid(nextPos)) {
-                    grid[creep.position.y][creep.position.x].type = EMPTY;
-                    creep.position = nextPos;
-                    grid[creep.position.y][creep.position.x].type = CREEP;
-                    moved = true;
-                    break;
-                }
-            }
-
+            bool moved = WeirdMove(creep);
             if (!moved) {
                 ++creepPos;
                 continue;
             }
         }
 
-            creep.moveTimer = 0.0f;
-
-            if (IsOnSpire(creep.position)) {
-                std::cout << "Creep reached the spire at position ("
-                          << creep.position.x << ", " << creep.position.y << ")\n";
-                creepPos = creeps.erase(creepPos);
-            } else {
-                ++creepPos;
-            }
+        if (IsOnSpire(creep.position)) {
+            std::cout << "Creep reached the spire at (" << creep.position.x << ", " << creep.position.y << ")\n";
+            creepPos = creeps.erase(creepPos);
+        } else {
+            ++creepPos;
         }
     }
+
+    auto endTime = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = endTime - startTime;
+    std::cout << "MoveCreeps Execution Time: " << elapsed.count() << " seconds\n";
 }

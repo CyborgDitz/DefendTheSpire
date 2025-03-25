@@ -7,7 +7,7 @@
 
 int main() {
     InitWindow(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE, "Defend The Spire");
-    SetTargetFPS(60);  // Set to 60 FPS
+    SetTargetFPS(60);
 
     InitializeGrid();
     Position startPosition{1, 1};
