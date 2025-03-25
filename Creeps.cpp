@@ -1,6 +1,8 @@
 #include "Creeps.h"
-#include <stack>
+
 #include <chrono>
+#include <stack>
+
 const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 std::vector<Creep> creeps;
 constexpr float MOVE_TIMER = 1.0f;
@@ -18,8 +20,7 @@ bool IsPositionValid(const Position& position) {
 
 
 std::map<int, Position> BreadthFirstPath(const Position& start) {
-    auto startTime = std::chrono::high_resolution_clock::now();
-
+    auto startTime = std::chrono::high_resolution_clock::now(); // Start timing
     std::queue<Node> nodeQueue;
     std::map<Position, Position> cameFrom;
     std::map<int, Position> path;
@@ -44,7 +45,7 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
         for (const auto& dir : DIRECTIONS) {
             Position nextPos = { currentNode.position.x + dir[1], currentNode.position.y + dir[0] };
 
-
+            // Only proceed if the next position is valid
             if (IsPositionValid(nextPos) && visited.find(nextPos) == visited.end()) {
                 nodeQueue.push(Node(nextPos, currentNode.distance + 1));
                 visited[nextPos] = true;
@@ -67,7 +68,7 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
         path[step++] = pathStack.top();
         pathStack.pop();
     }
-    auto endTime = std::chrono::high_resolution_clock::now();
+    auto endTime = std::chrono::high_resolution_clock::now(); // End timer
     std::chrono::duration<double> elapsed = endTime - startTime;
     std::cout << "BreadthFirstPath execution time: " << elapsed.count() << " seconds\n";
     return path;
