@@ -17,6 +17,8 @@ add_executable(DefendTheSpire main.cpp
         globals.cpp
         gameInit.cpp
         Creeps.cpp
+        debug.cpp
+        debug.h
 
 )
 

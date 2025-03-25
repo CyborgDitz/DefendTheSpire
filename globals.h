@@ -5,7 +5,6 @@
 #define GRID_HEIGHT 17
 #define TILE_SIZE 32.0f
 #include <vector>
-
 enum TileType
  {
   EMPTY = 0,

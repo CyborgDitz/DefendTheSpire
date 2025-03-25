@@ -5,7 +5,7 @@
 
 const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 std::vector<Creep> creeps;
-constexpr float MOVE_TIMER = 1.0f;
+
 
 bool IsOnSpire(const Position& position) {
     return grid[position.y][position.x].type == SPIRE;
@@ -45,7 +45,6 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
         for (const auto& dir : DIRECTIONS) {
             Position nextPos = { currentNode.position.x + dir[1], currentNode.position.y + dir[0] };
 
-            // Only proceed if the next position is valid
             if (IsPositionValid(nextPos) && visited.find(nextPos) == visited.end()) {
                 nodeQueue.push(Node(nextPos, currentNode.distance + 1));
                 visited[nextPos] = true;
@@ -97,35 +96,30 @@ bool WeirdMove(Creep& creep) {
     }
     return false;
 }
+int moveCreepsCallCount = 0;
 void MoveCreeps(float deltaTime) {
     auto startTime = std::chrono::high_resolution_clock::now();
 
     for (auto creepPos = creeps.begin(); creepPos != creeps.end();) {
         Creep& creep = *creepPos;
-        creep.moveTimer += deltaTime;
 
-        if (creep.moveTimer < MOVE_TIMER) {
-            ++creepPos;
-            continue;
-        }
-
-        creep.moveTimer = 0.0f;
-
+        // Ensure path recalculation is needed
         if (creep.path.empty() || !IsPositionValid(creep.path[creep.pathStep])) {
             std::cout << "Recalculating path for creep at (" << creep.position.x << ", " << creep.position.y << ")\n";
             creep.path = BreadthFirstPath(creep.position);
             creep.pathStep = 0;
         }
 
+        // Process creep movement if path exists
         if (!creep.path.empty() && creep.pathStep < creep.path.size()) {
             grid[creep.position.y][creep.position.x].type = EMPTY;
-            creep.position = creep.path[creep.pathStep++];
+            creep.position = creep.path[creep.pathStep++];  // Move to next path step
             grid[creep.position.y][creep.position.x].type = CREEP;
         } else {
-
+            // Call a special movement function if path ends or no valid movement is found
             bool moved = WeirdMove(creep);
             if (!moved) {
-                ++creepPos;
+                ++creepPos;  // If no move happened, go to the next creep
                 continue;
             }
         }
@@ -137,8 +131,9 @@ void MoveCreeps(float deltaTime) {
             ++creepPos;
         }
     }
-
+    moveCreepsCallCount++;
     auto endTime = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = endTime - startTime;
     std::cout << "MoveCreeps Execution Time: " << elapsed.count() << " seconds\n";
+    std::cout << "MoveCreeps called " << moveCreepsCallCount << " times.\n";
 }
