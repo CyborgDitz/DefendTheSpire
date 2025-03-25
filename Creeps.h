@@ -25,22 +25,19 @@ struct Creep {
     int pathStep;
     float moveTimer;
 
-    explicit Creep(Position position, int hp = 1, Color color = RED) :
+    Creep(Position position, int hp = 1, Color color = RED) :
         position(position), hp(hp), color(color), pathStep(0), moveTimer(0.0f) {}
 };
 
 std::map<int, Position> BreadthFirstPath(const Position& start);
-bool IsOnSpire(const Position& position);
 bool IsPositionValid(const Position& position);
-void RecalculatePath(Creep& creep);
-bool WeirdMove(Creep& creep);
-void HandleCreepReachedSpire(std::vector<Creep>::iterator& creepPos);
+bool IsOnSpire(const Position& position);
+
 void SpawnCreep(const Position& position);
 void MoveCreeps(float deltaTime);
 
-constexpr float MOVE_TIMER = 1.0f;
-constexpr int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 
-inline std::vector<Creep> creeps;
+extern std::vector<Creep> creeps;
+extern const int DIRECTIONS[4][2];
 
 #endif // CREEPS_H
