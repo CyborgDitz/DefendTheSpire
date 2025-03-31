@@ -158,7 +158,7 @@
 				{
 					"directoryIndex" : 4,
 					"id" : "glfw::@0007fcb0029cba81045f",
-					"jsonFile" : "target-glfw-Debug-57a93a70e6aaa8870c6d.json",
+					"jsonFile" : "target-glfw-Debug-34a0659e547ad110d336.json",
 					"name" : "glfw",
 					"projectIndex" : 2
 				},
@@ -189,8 +189,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug",
-		"source" : "C:/Projects/C++/DefendTheSpire"
+		"build" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug",
+		"source" : "C:/Projects/C++Projects/DefendTheSpire"
 	},
 	"version" : 
 	{

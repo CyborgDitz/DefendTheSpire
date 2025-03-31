@@ -2,67 +2,67 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/context.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./context.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/init.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./init.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/input.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./input.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./monitor.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/platform.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./platform.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./vulkan.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/window.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./window.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./egl_context.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./osmesa_context.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./null_init.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./null_monitor.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./null_window.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./null_joystick.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_module.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_time.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_thread.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_init.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_joystick.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_monitor.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./win32_window.c.obj"
 		},
 		{
-			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj"
+			"path" : "raylib_build/raylib/external/glfw/src/CMakeFiles/glfw.dir/./wgl_context.c.obj"
 		}
 	],
 	"backtrace" : 1,
@@ -192,7 +192,7 @@
 				},
 				{
 					"backtrace" : 7,
-					"path" : "C:/Projects/C++/DefendTheSpire/cmake-build-debug/raylib_build/raylib/external/glfw/src"
+					"path" : "C:/Projects/C++Projects/DefendTheSpire/cmake-build-debug/raylib_build/raylib/external/glfw/src"
 				}
 			],
 			"language" : "C",

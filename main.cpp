@@ -1,3 +1,5 @@
+#include <chrono>
+
 #include "gameInit.h"
 #include "globals.h"
 #include "raylib.h"
@@ -6,7 +8,6 @@
 #include "Creeps.h"
 int main() {
     InitWindow(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE, "Defend The Spire");
-    SetTargetFPS(60);
 
     InitializeGrid();
     Position startPosition{1, 1};
@@ -47,9 +48,10 @@ int main() {
             MoveCreeps(deltaTime); // Move creeps only once per MOVE_TIMER seconds
             moveTimer = 0.0f; // Reset the move timer after calling MoveCreeps
         }
+            DrawGame();
+        }
 
-        DrawGame();
-    }
+
 
     CloseWindow(); // Close window properly
 }
