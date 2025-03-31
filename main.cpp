@@ -48,10 +48,8 @@ int main() {
             MoveCreeps(deltaTime); // Move creeps only once per MOVE_TIMER seconds
             moveTimer = 0.0f; // Reset the move timer after calling MoveCreeps
         }
-            DrawGame();
-        }
 
-
-
+        DrawGame();
+    }
     CloseWindow(); // Close window properly
 }
