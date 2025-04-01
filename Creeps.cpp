@@ -4,7 +4,6 @@
 
 const int DIRECTIONS[4][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 std::vector<Creep> creeps;
-std::map<int, Position> path; // dont know size
 int moveCreepsCallCount = 0;
 
 bool IsOnSpire(const Position& position) {
@@ -22,6 +21,7 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
 
     std::queue<Node> nodeQueue;
     std::map<Position, Position> cameFrom;
+    std::map<int, Position> path;
     nodeQueue.push(Node(start, 0));
     std::map<Position, bool> visited;
     visited[start] = true;
@@ -75,15 +75,15 @@ void SpawnCreep(const Position& position) {
     for (int i = 0; i <1; i++) {
         Creep newCreep(position);
  //std::cout << i << << "creeps" << std::endl;
-        if (!path.empty()) {
+        if (!newCreep.path.empty()) {
             creeps.push_back(newCreep);
             grid[position.y][position.x].type = CREEP;
         }
     }
     Creep newCreep(position);
-    path = BreadthFirstPath(position);
+    newCreep.path = BreadthFirstPath(position);
 
-    if (!path.empty()) {
+    if (!newCreep.path.empty()) {
         creeps.push_back(newCreep);
         grid[position.y][position.x].type = CREEP;
     }
@@ -113,14 +113,14 @@ void MoveCreeps(float deltaTime) {
     for (auto creepPos = creeps.begin(); creepPos != creeps.end();) {
         Creep& creep = *creepPos;
 
-        if (path.empty() || creep.pathStep >= path.size() || !IsPositionValid(path[creep.pathStep])) {
-            path = BreadthFirstPath(creep.position);
+        if (creep.path.empty() || creep.pathStep >= creep.path.size() || !IsPositionValid(creep.path[creep.pathStep])) {
+            creep.path = BreadthFirstPath(creep.position);
             creep.pathStep = 0;
         }
 
-        if (!path.empty() && creep.pathStep < path.size()) {
+        if (!creep.path.empty() && creep.pathStep < creep.path.size()) {
             grid[creep.position.y][creep.position.x].type = EMPTY;
-            creep.position = path[creep.pathStep++];
+            creep.position = creep.path[creep.pathStep++];
             grid[creep.position.y][creep.position.x].type = CREEP;
         } else {
             if (!WeirdMove(creep)) {
