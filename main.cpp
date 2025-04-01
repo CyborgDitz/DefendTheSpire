@@ -32,13 +32,13 @@ int main() {
             inputTimer = 0.0f;
             // Update creeps' path after clicking on a tile
             for (auto& creep : creeps) {
-                BreadthFirstPath(creep.position);
+                creep.path = BreadthFirstPath(creep.position);
                 creep.pathStep = 0;
             }
         }
 
         if (spawnTimer >= SPAWN_INTERVAL) {
-            for (int i = 0; i < 1000; i++) {   // Spawn 10k enemies per frame. Main execution time: 7.220024 seconds
+            for (int i = 0; i < 10000; i++) {   // Spawn 10k enemies per frame. Main execution time: 7.220024 seconds
                                                 //   Main execution time: 10.894135 seconds, game cant be played until
                                                 // Main execution time: 0.060903 seconds after game is playable
                                                 //  Main execution time: 0.022677 seconds
