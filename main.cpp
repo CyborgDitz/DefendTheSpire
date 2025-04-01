@@ -7,6 +7,7 @@
 #include "Draw.h"
 #include "Creeps.h"
 int main() {
+    double startTime = GetTime();
     InitWindow(GRID_WIDTH * TILE_SIZE, GRID_HEIGHT * TILE_SIZE, "Defend The Spire");
 
     InitializeGrid();
@@ -20,7 +21,8 @@ int main() {
 
     float inputTimer = 0.0f;
     const float INPUT_INTERVAL = 0.0f;
-
+    double endTime = GetTime();  // End timing
+    printf("Game start execution time: %.6f seconds \n", endTime - startTime);
     while (!WindowShouldClose()) {
         double startTime = GetTime();  // Start timing
         float deltaTime = GetFrameTime();
@@ -38,10 +40,17 @@ int main() {
         }
 
         if (spawnTimer >= SPAWN_INTERVAL) {
-            for (int i = 0; i < 1000; i++) {   // Spawn 10k enemies per frame. Main execution time: 7.220024 seconds
+            for (int i = 0; i < 10000; i++) {   // Spawn 10k enemies per frame. Main execution time: 7.220024 seconds
                                                 //   Main execution time: 10.894135 seconds, game cant be played until
                                                 // Main execution time: 0.060903 seconds after game is playable
                                                 //  Main execution time: 0.022677 seconds
+
+                /** trial 2: path move
+                Game start execution time: 1.053674 seconds 
+                Main execution time: 9.559365 seconds
+                Main execution time: 8.857198 seconds
+                Main execution time: 0.121200 seconds
+                **/
                 SpawnCreep(startPosition);
             }
             spawnTimer = 0.0f;
