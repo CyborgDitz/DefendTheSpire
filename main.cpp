@@ -13,7 +13,7 @@ int main() {
     Position startPosition{1, 1};
 
     float moveTimer = 0.0f;
-    const float MOVE_TIMER = 1.0f; // Add this to define a move interval (e.g., 1 second)
+    const float MOVE_TIMER = 0.1f; // Add this to define a move interval (e.g., 1 second)
 
     float spawnTimer = 0.0f;
     const float SPAWN_INTERVAL = 0.0f;
@@ -22,6 +22,7 @@ int main() {
     const float INPUT_INTERVAL = 0.0f;
 
     while (!WindowShouldClose()) {
+        double startTime = GetTime();  // Start timing
         float deltaTime = GetFrameTime();
 
         inputTimer += deltaTime;
@@ -45,13 +46,15 @@ int main() {
         // Update moveTimer to accumulate time and call MoveCreeps when the time exceeds MOVE_TIMER
         moveTimer += deltaTime;
         if (moveTimer >= MOVE_TIMER) {
-          
+
             MoveCreeps(deltaTime); // Move creeps only once per MOVE_TIMER seconds
             moveTimer = 0.0f; // Reset the move timer after calling MoveCreeps
 
         }
 
         DrawGame();
+        double endTime = GetTime();  // End timing
+         printf("Main execution time: %.6f seconds \n", endTime - startTime);
     }
     CloseWindow(); // Close window properly
 }

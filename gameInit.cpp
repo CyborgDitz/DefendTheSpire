@@ -32,13 +32,13 @@ void InitializeTileSwitch(const Tile& tile) {
 
 void InitializeGrid() {
     constexpr Tile emptyTile = {EMPTY, {0, 0}, GRID_HEIGHT, GRID_WIDTH};
-    constexpr Tile wallTile = {WALL, {0, 4}, 11, 7};
-    constexpr Tile spireTile = {SPIRE, {0, 13}, 2, 2};
+    constexpr Tile spireTile = {SPIRE, {0, 13}, GRID_HEIGHT - 2, GRID_WIDTH - 2};
+    constexpr Tile wallTile = {WALL, {0, 4}, GRID_HEIGHT - 11, GRID_WIDTH - 7};
     constexpr Tile creepTile = {CREEP, {1, 1}, 1, 1};
 
     InitializeTileSwitch(emptyTile);
-    InitializeTileSwitch(wallTile);
     InitializeTileSwitch(spireTile);
+    InitializeTileSwitch(wallTile);
     InitializeTileSwitch(creepTile);
 }
 
