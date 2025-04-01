@@ -37,9 +37,13 @@ int main() {
             }
         }
 
-        spawnTimer += deltaTime;
         if (spawnTimer >= SPAWN_INTERVAL) {
-            SpawnCreep(startPosition);
+            for (int i = 0; i < 10000; i++) {   // Spawn 10k enemies per frame. Main execution time: 7.220024 seconds
+                                                //   Main execution time: 10.894135 seconds, game cant be played until
+                                                // Main execution time: 0.060903 seconds after game is playable
+                                                //  Main execution time: 0.022677 seconds
+                SpawnCreep(startPosition);
+            }
             spawnTimer = 0.0f;
         }
 

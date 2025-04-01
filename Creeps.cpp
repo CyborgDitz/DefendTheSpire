@@ -65,14 +65,14 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
     }
 
     double endTime = GetTime();  // End timing
-   printf("BreadthFirstPath execution time: %.6f seconds\n", endTime - startTime);
+ //  printf("BreadthFirstPath execution time: %.6f seconds\n", endTime - startTime);
     return path;
 }
 
 void SpawnCreep(const Position& position) {
     double startTime = GetTime();  // Start timing
 
-    for (int i = 0; i <999; i++) {
+    for (int i = 0; i <1; i++) {
         Creep newCreep(position);
  //std::cout << i << << "creeps" << std::endl;
         if (!newCreep.path.empty()) {
