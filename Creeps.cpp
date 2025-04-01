@@ -20,7 +20,6 @@ bool IsPositionValid(const Position& position) {
 
 
 std::map<int, Position> BreadthFirstPath(const Position& start) {
-    auto startTime = std::chrono::high_resolution_clock::now(); // Start timing
     std::queue<Node> nodeQueue;
     std::map<Position, Position> cameFrom;
     std::map<int, Position> path;
@@ -67,9 +66,6 @@ std::map<int, Position> BreadthFirstPath(const Position& start) {
         path[step++] = pathStack.top();
         pathStack.pop();
     }
-    auto endTime = std::chrono::high_resolution_clock::now(); // End timer
-    std::chrono::duration<double> elapsed = endTime - startTime;
-    std::cout << "BreadthFirstPath execution time: " << elapsed.count() << " seconds\n";
     return path;
 }
 
@@ -98,14 +94,13 @@ bool WeirdMove(Creep& creep) {
 }
 int moveCreepsCallCount = 0;
 void MoveCreeps(float deltaTime) {
-    auto startTime = std::chrono::high_resolution_clock::now();
 
     for (auto creepPos = creeps.begin(); creepPos != creeps.end();) {
         Creep& creep = *creepPos;
 
         // Ensure path recalculation is needed
         if (creep.path.empty() || !IsPositionValid(creep.path[creep.pathStep])) {
-            std::cout << "Recalculating path for creep at (" << creep.position.x << ", " << creep.position.y << ")\n";
+            //std::cout << "Recalculating path for creep at (" << creep.position.x << ", " << creep.position.y << ")\n";
             creep.path = BreadthFirstPath(creep.position);
             creep.pathStep = 0;
         }
@@ -125,15 +120,11 @@ void MoveCreeps(float deltaTime) {
         }
 
         if (IsOnSpire(creep.position)) {
-            std::cout << "Creep reached the spire at (" << creep.position.x << ", " << creep.position.y << ")\n";
+           // std::cout << "Creep reached the spire at (" << creep.position.x << ", " << creep.position.y << ")\n";
             creepPos = creeps.erase(creepPos);
         } else {
             ++creepPos;
         }
     }
     moveCreepsCallCount++;
-    auto endTime = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = endTime - startTime;
-    std::cout << "MoveCreeps Execution Time: " << elapsed.count() << " seconds\n";
-    std::cout << "MoveCreeps called " << moveCreepsCallCount << " times.\n";
 }

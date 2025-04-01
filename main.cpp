@@ -45,8 +45,10 @@ int main() {
         // Update moveTimer to accumulate time and call MoveCreeps when the time exceeds MOVE_TIMER
         moveTimer += deltaTime;
         if (moveTimer >= MOVE_TIMER) {
+          
             MoveCreeps(deltaTime); // Move creeps only once per MOVE_TIMER seconds
             moveTimer = 0.0f; // Reset the move timer after calling MoveCreeps
+
         }
 
         DrawGame();

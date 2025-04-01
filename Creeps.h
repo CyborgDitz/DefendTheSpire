@@ -21,7 +21,7 @@ struct Creep {
     Position position; //int 4b + 2 operators. Cache line from position struct?
     int pathStep; // int 4b
     float moveTimer; // float 8 bytes, FPU processor
-    std::map<int, Position> path;
+    std::map<int, Position> path; // dont know size
 
     int currentHp;
     int maxHp;

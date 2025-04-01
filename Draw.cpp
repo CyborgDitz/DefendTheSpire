@@ -42,39 +42,10 @@ void DrawCreeps() {
   }
 }
 void DrawGame() {
-
-  auto drawGameStart = std::chrono::high_resolution_clock::now();
-
-  auto beginDrawingStart = std::chrono::high_resolution_clock::now();
   BeginDrawing();
-  auto beginDrawingEnd = std::chrono::high_resolution_clock::now();
-
-  auto clearBgStart = std::chrono::high_resolution_clock::now();
   ClearBackground(RAYWHITE);
-  auto clearBgEnd = std::chrono::high_resolution_clock::now();
-
   DrawTiles();
   DrawCreeps();
-
-  auto endDrawingStart = std::chrono::high_resolution_clock::now();
   EndDrawing();
-  auto endDrawingEnd = std::chrono::high_resolution_clock::now();
 
-  auto drawGameEnd = std::chrono::high_resolution_clock::now();
-
-  std::cout << "  BeginDrawing Time: "
-            << std::chrono::duration<double, std::milli>(beginDrawingEnd - beginDrawingStart).count()
-            << " ms\n";
-
-  std::cout << "  ClearBackground Time: "
-            << std::chrono::duration<double, std::milli>(clearBgEnd - clearBgStart).count()
-            << " ms\n";
-
-  std::cout << "  EndDrawing Time: "
-            << std::chrono::duration<double, std::milli>(endDrawingEnd - endDrawingStart).count()
-            << " ms\n";
-
-  std::cout << "  DrawGame Total Time: "
-            << std::chrono::duration<double, std::milli>(drawGameEnd - drawGameStart).count()
-            << " ms\n";
 }
