@@ -18,15 +18,17 @@ struct Node {
 };
 
 struct Creep {
-    Position position;
-    int hp;
-    Color color;
+    Position position; //int 4b + 2 operators. Cache line from position struct?
+    int pathStep; // int 4b
+    float moveTimer; // float 8 bytes, FPU processor
     std::map<int, Position> path;
-    int pathStep;
-    float moveTimer;
+
+    int currentHp;
+    int maxHp;
+
 
     Creep(Position position, int hp = 1, Color color = RED) :
-        position(position), hp(hp), color(color), pathStep(0), moveTimer(0.0f) {}
+        position(position), currentHp(currentHp), maxHp(maxHp), pathStep(0), moveTimer(0.0f) {}
 };
 
 std::map<int, Position> BreadthFirstPath(const Position& start);

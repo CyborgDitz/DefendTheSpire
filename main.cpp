@@ -16,10 +16,10 @@ int main() {
     const float MOVE_TIMER = 1.0f; // Add this to define a move interval (e.g., 1 second)
 
     float spawnTimer = 0.0f;
-    const float SPAWN_INTERVAL = 5.0f;
+    const float SPAWN_INTERVAL = 0.0f;
 
     float inputTimer = 0.0f;
-    const float INPUT_INTERVAL = 0.5f;
+    const float INPUT_INTERVAL = 0.0f;
 
     while (!WindowShouldClose()) {
         float deltaTime = GetFrameTime();

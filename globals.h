@@ -32,8 +32,6 @@ struct Tile {
     int columns;
 };
 
-
-
 extern Tile grid[GRID_HEIGHT][GRID_WIDTH];
 bool InBounds (Position position);
 #endif //GLOBALS_H
