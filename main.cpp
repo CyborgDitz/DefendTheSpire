@@ -16,8 +16,8 @@ int main() {
     float moveTimer = 0.0f;
     const float MOVE_TIMER = 0.1f; // Add this to define a move interval (e.g., 1 second)
 
-    float spawnTimer = 0.0f;
-    const float SPAWN_INTERVAL = 0.0f;
+    float spawnTimer = 1.0f;
+    const float SPAWN_INTERVAL = .0f;
 
     float inputTimer = 0.0f;
     const float INPUT_INTERVAL = 0.0f;
@@ -34,7 +34,7 @@ int main() {
             inputTimer = 0.0f;
             // Update creeps' path after clicking on a tile
             for (auto& creep : creeps) {
-                for (int i = 0; i < 10000; i++) {
+                for (int i = 0; i < 100; i++) {
                     BreadthFirstPath(creep.position);
                     creep.pathStep = 0;
                 }
@@ -65,7 +65,7 @@ int main() {
                    */
                    SpawnCreep(startPosition);
                }
-            spawnTimer = 00.0f;
+            spawnTimer = 0.0f;
         }
 
         // Update moveTimer to accumulate time and call MoveCreeps when the time exceeds MOVE_TIMER

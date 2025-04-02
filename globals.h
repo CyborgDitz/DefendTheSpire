@@ -5,7 +5,7 @@
 #define GRID_HEIGHT 32
 #define TILE_SIZE 30.0f
 #include <vector>
-enum TileType
+enum TileType //4b even with 5+ enums
  {
   EMPTY = 0,
   TOWER = 1,
@@ -15,19 +15,20 @@ enum TileType
   };
 
 struct Position {
-    int x, y;
+    int x; //4b
+    int y;//4b
 
     bool operator<(const Position& other) const {
         return (x < other.x) || (x == other.x && y < other.y);
     }
-
+//not members, no nytes
     bool operator==(const Position& other) const {
         return x == other.x && y == other.y;
     }
 };
-struct Tile {
-    TileType type;
-    Position position;
+struct Tile { //64b cacheline
+    TileType type; // 4 b
+    Position position; // 8b
     int rows;
     int columns;
 };
