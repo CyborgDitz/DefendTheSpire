@@ -1,9 +1,9 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#define GRID_WIDTH 33
-#define GRID_HEIGHT 33
-#define TILE_SIZE 32.0f
+#define GRID_WIDTH 32
+#define GRID_HEIGHT 32
+#define TILE_SIZE 30.0f
 #include <vector>
 enum TileType
  {

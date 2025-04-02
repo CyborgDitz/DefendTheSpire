@@ -34,26 +34,38 @@ int main() {
             inputTimer = 0.0f;
             // Update creeps' path after clicking on a tile
             for (auto& creep : creeps) {
-                BreadthFirstPath(creep.position);
-                creep.pathStep = 0;
+                for (int i = 0; i < 10000; i++) {
+                    BreadthFirstPath(creep.position);
+                    creep.pathStep = 0;
+                }
             }
         }
 
         if (spawnTimer >= SPAWN_INTERVAL) {
-            for (int i = 0; i < 10000; i++) {   // Spawn 10k enemies per frame. Main execution time: 7.220024 seconds
-                                                //   Main execution time: 10.894135 seconds, game cant be played until
-                                                // Main execution time: 0.060903 seconds after game is playable
-                                                //  Main execution time: 0.022677 seconds
+               for (int i = 0; i < 100; i++) {
+                   /*
+                   Gamestart execution time: 1.102305 seconds
+                   Main execution time: 7.017532 seconds
+                   Main execution time: 12.236588 seconds
+                   Main execution time: 0.075890 seconds
+                   */
 
-                /** trial 2: path move
-                Game start execution time: 1.053674 seconds 
-                Main execution time: 9.559365 seconds
-                Main execution time: 8.857198 seconds
-                Main execution time: 0.121200 seconds
-                **/
-                SpawnCreep(startPosition);
-            }
-            spawnTimer = 0.0f;
+                   /* trial 2: path move
+                   Game start execution time: 1.053674 seconds
+                   Main execution time: 9.559365 seconds
+                   Main execution time: 8.857198 seconds
+                   Main execution time: 0.121200 seconds
+                   */
+
+                   /* trial 3 : 50k spawns
+                   Game start execution time: 1.055147 seconds
+                   Main execution time: 46.627085 seconds
+                   Main execution time: 46.102448 seconds
+                   Main execution time: 0.448100 seconds
+                   */
+                   SpawnCreep(startPosition);
+               }
+            spawnTimer = 00.0f;
         }
 
         // Update moveTimer to accumulate time and call MoveCreeps when the time exceeds MOVE_TIMER
